@@ -1,6 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@500;600;700&display=swap');
 @import "katex/dist/katex.min.css";
 
+:root {
+  color-scheme: light dark;
+  --editorial-ink: #27272a;
+  --editorial-muted: #656565;
+  --editorial-line: #d9d9d9;
+  --editorial-paper: #fff;
+  --editorial-soft: #f7f7f7;
+  --editorial-accent: #f48120;
+  --editorial-link: #1d4ed8;
+}
+
+/* Consumers may set data-editorial-theme="light" or "dark" on html/body to override system preference. */
+:root[data-editorial-theme="dark"], [data-editorial-theme="dark"] {
+  color-scheme: dark;
+  --editorial-ink: #f4f1ec;
+  --editorial-muted: #b5b1aa;
+  --editorial-line: #3c3a37;
+  --editorial-paper: #161514;
+  --editorial-soft: #22201e;
+  --editorial-accent: #f6a45a;
+  --editorial-link: #9bc5ff;
+}
+
+:root[data-editorial-theme="light"], [data-editorial-theme="light"] {
+  color-scheme: light;
+  --editorial-ink: #27272a;
+  --editorial-muted: #656565;
+  --editorial-line: #d9d9d9;
+  --editorial-paper: #fff;
+  --editorial-soft: #f7f7f7;
+  --editorial-accent: #f48120;
+  --editorial-link: #1d4ed8;
+}
+
 .editorial-nav { display: flex; align-items: center; justify-content: space-between; min-height: 68px; border-bottom: 1px solid var(--editorial-line, #d9d9d9); color: var(--editorial-ink, #27272a); font: .83rem/1.2 "Noto Sans KR", Arial, sans-serif; }
 .editorial-wordmark { color: inherit; font-weight: 700; letter-spacing: .08em; text-decoration: none; }
 .editorial-nav-links { display: flex; gap: 24px; }
@@ -23,13 +57,6 @@
 .editorial-tags span { padding: 2px 7px; border: 1px solid var(--editorial-line, #d9d9d9); font: .68rem/1.35 "Noto Sans KR", Arial, sans-serif; }
 
 .editorial-content {
-  --editorial-ink: #27272a;
-  --editorial-muted: #656565;
-  --editorial-line: #d9d9d9;
-  --editorial-paper: #fff;
-  --editorial-soft: #f7f7f7;
-  --editorial-accent: #f48120;
-  --editorial-link: #1d4ed8;
   width: min(760px, 100%);
   margin: 0 auto;
   padding: 43px 0;
@@ -69,6 +96,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .editorial-content { --editorial-ink: #f4f1ec; --editorial-muted: #b5b1aa; --editorial-line: #3c3a37; --editorial-paper: #161514; --editorial-soft: #22201e; --editorial-accent: #f6a45a; --editorial-link: #9bc5ff; }
+  :root:not([data-editorial-theme="light"]) { --editorial-ink: #f4f1ec; --editorial-muted: #b5b1aa; --editorial-line: #3c3a37; --editorial-paper: #161514; --editorial-soft: #22201e; --editorial-accent: #f6a45a; --editorial-link: #9bc5ff; }
   .editorial-content .katex { color: var(--editorial-ink); }
 }

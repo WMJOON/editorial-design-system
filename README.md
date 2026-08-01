@@ -41,6 +41,10 @@ The hierarchy is semantic first, and the visual classes make the intent explicit
 
 Markdown follows the same scale automatically: `#` renders as `title-1`, `##` as `title-2`, and `###` as `title-3`. `EditorialArticle` owns its page `h1`; therefore Markdown passed to it should normally start at `##`. The personal-site source adapter removes a leading `#` only when it exactly matches the frontmatter title, preventing duplicated article titles without altering standalone Markdown documents.
 
+## Theme tokens
+
+Every component uses the shared `--editorial-*` color tokens, so navigation, headers, tags, Markdown, tables, and diagrams follow the same light/dark palette. The system preference is used by default; set `data-editorial-theme="light"` or `data-editorial-theme="dark"` on `html` or a wrapping element to override it.
+
 ## Releases
 
 Create and push a `v*` tag after updating `package.json`. GitHub Actions publishes the scoped private package to GitHub Packages.
