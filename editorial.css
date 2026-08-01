@@ -10,9 +10,9 @@
 /* Display is a brand/landing treatment. Document hierarchy stays h1 → title-1, h2 → title-2. */
 .editorial-display,.editorial-title-1,.editorial-title-2,.editorial-title-3 { margin: 0; font-family: "Noto Serif KR", Georgia, serif; font-weight: 600; letter-spacing: -.02em; }
 .editorial-display { font-size: clamp(3.5rem, 7.4vw, 6.9rem); line-height: 1.03; }
-.editorial-title-1 { max-width: 800px; font-size: clamp(2.7rem, 5vw, 4.75rem); line-height: 1.12; text-wrap: balance; }
-.editorial-title-2 { font-size: 1.72rem; line-height: 1.15; }
-.editorial-title-3 { font-size: 1.34rem; line-height: 1.2; }
+.editorial-title-1,.editorial-content h1 { max-width: 800px; font-family: "Noto Serif KR", Georgia, serif; font-size: clamp(2.7rem, 5vw, 4.75rem); font-weight: 600; letter-spacing: -.02em; line-height: 1.12; text-wrap: balance; }
+.editorial-title-2,.editorial-content h2 { font-family: "Noto Serif KR", Georgia, serif; font-size: 1.72rem; font-weight: 600; letter-spacing: -.02em; line-height: 1.15; }
+.editorial-title-3,.editorial-content h3 { font-family: "Noto Serif KR", Georgia, serif; font-size: 1.34rem; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; }
 
 .editorial-article { width: min(760px, calc(100% - 48px)); margin: 0 auto; color: var(--editorial-ink, #27272a); }
 .editorial-article-header { padding: 76px 0 43px; border-bottom: 1px solid var(--editorial-line, #d9d9d9); font-family: "Noto Sans KR", Arial, sans-serif; }
@@ -39,9 +39,6 @@
 
 .editorial-content p { margin: 0 0 25px; }
 .editorial-content h1,.editorial-content h2,.editorial-content h3 { margin: 50px 0 17px; }
-.editorial-content h1 { max-width: 800px; font-family: "Noto Serif KR", Georgia, serif; font-size: clamp(2.7rem, 5vw, 4.75rem); font-weight: 600; letter-spacing: -.02em; line-height: 1.12; text-wrap: balance; }
-.editorial-content h2 { font-family: "Noto Serif KR", Georgia, serif; font-size: 1.72rem; font-weight: 600; letter-spacing: -.02em; line-height: 1.15; }
-.editorial-content h3 { font-family: "Noto Serif KR", Georgia, serif; font-size: 1.34rem; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; }
 .editorial-content a { color: var(--editorial-link); text-decoration: underline; text-underline-offset: 3px; }
 .editorial-content ul,.editorial-content ol { margin: 0 0 27px; padding-left: 22px; }
 .editorial-content li { margin: 6px 0; }
