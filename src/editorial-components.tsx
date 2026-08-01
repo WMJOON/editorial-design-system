@@ -13,7 +13,15 @@ export function EditorialNav({ brand, brandHref = "/", links = [], trailing }: {
 
 export function EditorialTags({ tags }: { tags: string[] }) {
   if (tags.length === 0) return null;
-  return <div className="editorial-tags" aria-label="태그">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>;
+  return <div className="editorial-tags" aria-label="태그">{tags.map((tag) => <EditorialTag key={tag}>{tag}</EditorialTag>)}</div>;
+}
+
+export function EditorialTag({ children }: { children: ReactNode }) {
+  return <span className="editorial-tag">{children}</span>;
+}
+
+export function EditorialBadge({ children }: { children: ReactNode }) {
+  return <span className="editorial-badge">{children}</span>;
 }
 
 export function EditorialArticleHeader({ category, date, title, subtitle, tags = [] }: { category: string; date: string; title: string; subtitle?: string; tags?: string[] }) {

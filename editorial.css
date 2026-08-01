@@ -53,8 +53,10 @@
 .editorial-kicker { margin: 0; color: var(--editorial-muted, #656565); font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .editorial-article-header .editorial-title-1 { max-width: 900px; margin: 20px 0 0; }
 .editorial-subtitle { margin: 25px 0 0; color: var(--editorial-muted, #656565); font-size: 1.1rem; line-height: 1.5; }
-.editorial-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; }
-.editorial-tags span { padding: 2px 7px; border: 1px solid var(--editorial-line, #d9d9d9); font: .68rem/1.35 "Noto Sans KR", Arial, sans-serif; }
+.editorial-tags { display: flex; flex-wrap: wrap; align-items: baseline; margin-top: 22px; color: var(--editorial-muted); font: 1rem/1.55 "Noto Sans KR", Arial, sans-serif; }
+.editorial-tag { white-space: nowrap; }
+.editorial-tag:not(:last-child)::after { content: "·"; margin: 0 8px; color: var(--editorial-line); }
+.editorial-badge { display: inline-flex; align-items: center; padding: 2px 7px; border: 1px solid var(--editorial-line); color: var(--editorial-ink); font: .68rem/1.35 "Noto Sans KR", Arial, sans-serif; }
 
 .editorial-content {
   width: min(760px, 100%);

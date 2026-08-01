@@ -27,6 +27,8 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 - `EditorialArticleHeader`: metadata, page title, subtitle, and tags.
 - `EditorialNav`: brand and navigation links.
 - `EditorialTags`: shared tag treatment.
+- `EditorialTag`: body-sized topical metadata; tags are separated by dots rather than presented as badges.
+- `EditorialBadge`: compact status/count marker, intentionally distinct from a tag.
 
 `EditorialMarkdown` standardizes typography, dark mode, and a 760px reading measure. The components are intentionally editorial primitives; product-specific dashboard UI remains in each consuming app.
 
