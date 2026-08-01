@@ -19,7 +19,7 @@ export function EditorialTags({ tags }: { tags: string[] }) {
 export function EditorialArticleHeader({ category, date, title, subtitle, tags = [] }: { category: string; date: string; title: string; subtitle?: string; tags?: string[] }) {
   return <header className="editorial-article-header">
     <p className="editorial-kicker">{category} · {date}</p>
-    <h1>{title}</h1>
+    <h1 className="editorial-title-1">{title}</h1>
     {subtitle && <p className="editorial-subtitle">{subtitle}</p>}
     <EditorialTags tags={tags} />
   </header>;

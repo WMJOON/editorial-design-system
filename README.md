@@ -23,12 +23,23 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 ## Components
 
 - `EditorialMarkdown`: GFM, literal single tildes, tables, KaTeX, and Mermaid.
-- `EditorialArticle`: article header and rendered body.
-- `EditorialArticleHeader`: metadata, title, subtitle, and tags.
+- `EditorialArticle`: page-title header and rendered body.
+- `EditorialArticleHeader`: metadata, page title, subtitle, and tags.
 - `EditorialNav`: brand and navigation links.
 - `EditorialTags`: shared tag treatment.
 
 `EditorialMarkdown` standardizes typography, dark mode, and a 760px reading measure. The components are intentionally editorial primitives; product-specific dashboard UI remains in each consuming app.
+
+## Title roles
+
+The hierarchy is semantic first, and the visual classes make the intent explicit.
+
+- `editorial-display`: brand or landing-page display only. It is not a document-heading scale.
+- `editorial-title-1`: a document/page `h1`.
+- `editorial-title-2`: an `h2` section title.
+- `editorial-title-3`: an `h3` subsection title.
+
+Markdown follows the same scale automatically: `#` renders as `title-1`, `##` as `title-2`, and `###` as `title-3`. `EditorialArticle` owns its page `h1`; therefore Markdown passed to it should normally start at `##`. The personal-site source adapter removes a leading `#` only when it exactly matches the frontmatter title, preventing duplicated article titles without altering standalone Markdown documents.
 
 ## Releases
 
