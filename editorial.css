@@ -7,6 +7,11 @@
 .editorial-nav a:hover { color: var(--editorial-link, #1d4ed8); }
 .editorial-nav-trailing { margin-left: auto; padding-left: 24px; }
 
+/* A shared semantic scale: the document level stays h1, while visual weight follows its role. */
+.editorial-display-title,.editorial-page-title { margin: 0; font-family: "Noto Serif KR", Georgia, serif; font-weight: 600; letter-spacing: -.02em; }
+.editorial-display-title { font-size: clamp(3.5rem, 7.4vw, 6.9rem); line-height: 1.03; }
+.editorial-page-title { max-width: 800px; font-size: clamp(2.7rem, 5vw, 4.75rem); line-height: 1.12; text-wrap: balance; }
+
 .editorial-article { width: min(760px, calc(100% - 48px)); margin: 0 auto; color: var(--editorial-ink, #27272a); }
 .editorial-article-header { padding: 76px 0 43px; border-bottom: 1px solid var(--editorial-line, #d9d9d9); font-family: "Noto Sans KR", Arial, sans-serif; }
 .editorial-kicker { margin: 0; color: var(--editorial-muted, #656565); font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
@@ -57,6 +62,8 @@
   .editorial-nav-links { gap: 12px; font-size: .73rem; }
   .editorial-article { width: min(100% - 32px, 760px); }
   .editorial-article-header { padding-top: 57px; }
+  .editorial-display-title { font-size: clamp(3.15rem, 15vw, 4.7rem); }
+  .editorial-page-title { font-size: clamp(2.55rem, 11vw, 3.6rem); }
   .editorial-content { padding: 34px 0 48px; }
   .editorial-table-scroll table { font-size: .84rem; }
   .editorial-content th,.editorial-content td { min-width: 118px; padding: 9px 10px; }
