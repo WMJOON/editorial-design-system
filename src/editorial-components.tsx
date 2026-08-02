@@ -11,9 +11,9 @@ export function EditorialNav({ brand, brandHref = "/", links = [], trailing }: {
   </nav>;
 }
 
-export function EditorialTags({ tags }: { tags: string[] }) {
+export function EditorialTags({ tags, className, size = "md" }: { tags: string[]; className?: string; size?: EditorialMetadataSize }) {
   if (tags.length === 0) return null;
-  return <div className="editorial-tags" aria-label="태그">{tags.map((tag) => <EditorialTag key={tag}>{tag}</EditorialTag>)}</div>;
+  return <div className={["editorial-tags", className].filter(Boolean).join(" ")} aria-label="태그">{tags.map((tag) => <EditorialTag key={tag} size={size}>{tag}</EditorialTag>)}</div>;
 }
 
 export type EditorialMetadataSize = "sm" | "md" | "lg";

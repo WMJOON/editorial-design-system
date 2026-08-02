@@ -37,12 +37,15 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 
 ### Atoms
 
-- `EditorialTag`: body-sized topical metadata.
-- `EditorialBadge`: compact status or count marker.
+- `EditorialButton` and `EditorialIconButton`: labelled actions in `sm | md | lg`.
+- `EditorialTag`: one topical taxonomy facet in `sm | md | lg`.
+- `EditorialBadge`: one mutually exclusive status, type, or count in `sm | md | lg`.
+- `EditorialInput`, `EditorialSelect`, `EditorialCheckbox`, and `EditorialTextArea`: labelled native form controls.
 
 ### Molecules
 
-- `EditorialTags`: dot-separated topical metadata group.
+- `EditorialTags`: dot-separated topical metadata group, composed from `EditorialTag`.
+- `EditorialSegmentedControl`: a compact fixed-option selection control.
 - `EditorialNav`: brand, navigation links, and trailing actions.
 - `EditorialThemeSelector`: persistent `라이트 | 다크 | 시스템` preference; system is the default.
 - `EditorialMetricStrip` and `EditorialContentCard`: operations metadata and content units.
@@ -56,6 +59,16 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 - `EditorialKanbanBoard` and `EditorialEditorShell`: presentational operations organisms; the backoffice app owns its drag, save, and filesystem API behavior.
 
 `EditorialMarkdown` standardizes typography, dark mode, and a 760px reading measure. The components are intentionally editorial primitives; product-specific dashboard UI remains in each consuming app.
+
+### Composition contract
+
+Visual similarity alone is not a component boundary. The shared organisms consume the same primitives that Storybook documents:
+
+- A content type such as `essay` or `framework` is an `EditorialBadge`.
+- A taxonomy such as `knowledge systems` or `reader path` is an `EditorialTag`; several facets render through `EditorialTags`.
+- `EditorialContentCard` composes those atoms directly, rather than reproducing their borders or typography in local CSS.
+
+This keeps a Storybook example, its DOM semantics, and the interface used by the backoffice aligned.
 
 ## Title roles
 
