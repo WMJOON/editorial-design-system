@@ -31,7 +31,7 @@ export function EditorialArticleHeader({ category, date, title, subtitle, tags =
     <p className="editorial-kicker">{category} · {date}</p>
     <h1 className="editorial-title-1">{title}</h1>
     {subtitle && <p className="editorial-subtitle">{subtitle}</p>}
-    <EditorialTags tags={tags} />
+    <EditorialTags tags={tags} size="sm" />
   </header>;
 }
 
