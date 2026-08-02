@@ -5,5 +5,5 @@ const meta = { title: "Atoms/Metadata", parameters: { layout: "padded" } } satis
 export default meta;
 type Story = StoryObj;
 
-export const Tag: Story = { render: () => <EditorialTag>독자 경로</EditorialTag> };
-export const Badge: Story = { render: () => <div style={{ display: "flex", gap: 8 }}><EditorialBadge>New</EditorialBadge><EditorialBadge>12</EditorialBadge></div> };
+export const Tag: Story = { render: () => <div style={{ display: "flex", alignItems: "center", gap: 12 }}><EditorialTag size="sm">독자 경로</EditorialTag><EditorialTag>독자 경로</EditorialTag><EditorialTag size="lg">독자 경로</EditorialTag></div> };
+export const Badge: Story = { render: () => <div style={{ display: "flex", alignItems: "center", gap: 8 }}><EditorialBadge size="sm">New</EditorialBadge><EditorialBadge>12</EditorialBadge><EditorialBadge size="lg">Published</EditorialBadge></div> };
