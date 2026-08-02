@@ -125,7 +125,16 @@
 .editorial-content th,.editorial-content td { min-width: 130px; padding: 10px 12px; border: 1px solid var(--editorial-line); text-align: left; vertical-align: top; }
 .editorial-content th { background: var(--editorial-soft); }
 .editorial-content blockquote { margin: 28px 0; padding-left: 20px; border-left: 3px solid var(--editorial-accent); color: var(--editorial-muted); }
-.editorial-content pre { overflow: auto; margin: 0 0 25px; padding: 18px; background: var(--editorial-soft); font-size: .85rem; }
+.editorial-content pre { overflow: auto; margin: 0 0 25px; padding: 20px 22px; border: 1px solid color-mix(in srgb, var(--editorial-code-fg) 10%, transparent); border-radius: 12px; background: var(--editorial-code-bg); color: var(--editorial-code-fg); font: .9rem/1.72 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; tab-size: 2; }
+.editorial-content pre code { font: inherit; }
+.editorial-content pre code.hljs { display: block; overflow-x: auto; padding: 0; background: transparent; color: var(--editorial-code-fg); }
+.editorial-content .hljs-comment,.editorial-content .hljs-quote { color: #9b948a; font-style: italic; }
+.editorial-content .hljs-attr,.editorial-content .hljs-attribute,.editorial-content .hljs-property,.editorial-content .hljs-params { color: #6cb8e8; }
+.editorial-content .hljs-string,.editorial-content .hljs-regexp,.editorial-content .hljs-template-variable { color: #c3e85a; }
+.editorial-content .hljs-number,.editorial-content .hljs-literal,.editorial-content .hljs-symbol,.editorial-content .hljs-bullet { color: #f0b66b; }
+.editorial-content .hljs-keyword,.editorial-content .hljs-selector-tag,.editorial-content .hljs-meta,.editorial-content .hljs-type { color: #d6a3ee; }
+.editorial-content .hljs-title,.editorial-content .hljs-title.function_,.editorial-content .hljs-function .hljs-title { color: #79d4c2; }
+.editorial-content .hljs-built_in,.editorial-content .hljs-variable,.editorial-content .hljs-selector-class { color: #f4d27a; }
 .editorial-mermaid-diagram { overflow: auto; margin: 34px 0; padding: 22px; border: 1px solid var(--editorial-line); background: var(--editorial-paper); }
 .editorial-mermaid-diagram svg { display: block; min-width: 560px; max-width: none; margin: auto; }
 .editorial-mermaid-error { margin: 28px 0; padding: 14px; border: 1px solid var(--editorial-line); color: var(--editorial-muted); }
@@ -140,6 +149,7 @@
   .editorial-display { font-size: clamp(3.15rem, 15vw, 4.7rem); }
   .editorial-title-1,.editorial-content h1 { font-size: clamp(2rem, 9vw, 2.35rem); line-height: 1.24; }
   .editorial-content { padding: 34px 0 48px; }
+  .editorial-content pre { padding: 16px; border-radius: 9px; font-size: .82rem; }
   .editorial-table-scroll table { font-size: .84rem; }
   .editorial-content th,.editorial-content td { min-width: 118px; padding: 9px 10px; }
 }
