@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes } from "react";
+import { useId, useRef, type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes } from "react";
 import type { EditorialControlSize } from "./editorial-actions.js";
 
 export type EditorialSelectOption = { value: string; label: string };
@@ -74,9 +74,43 @@ export type EditorialSegmentedControlProps = {
   className?: string;
 };
 
+type PressableOptionProps = {
+  active: boolean;
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+};
+
+/**
+ * iOS Safari can finish a touch gesture without dispatching React's synthetic
+ * click. Handle touch directly, then ignore the follow-up synthetic click.
+ * Keyboard and mouse interaction continue through the regular click path.
+ */
+function PressableOption({ active, label, value, onChange }: PressableOptionProps) {
+  const lastTouchPress = useRef(0);
+
+  function press() {
+    onChange(value);
+  }
+
+  return <button
+    type="button"
+    className={`editorial-segmented-option${active ? " is-active" : ""}`}
+    aria-pressed={active}
+    onTouchEnd={() => {
+      lastTouchPress.current = Date.now();
+      press();
+    }}
+    onClick={() => {
+      if (Date.now() - lastTouchPress.current < 700) return;
+      press();
+    }}
+  >{label}</button>;
+}
+
 /** A visible, touch-safe choice for a small fixed option set. */
 export function EditorialSegmentedControl({ label, options, value, onChange, size = "md", className }: EditorialSegmentedControlProps) {
   return <div className={["editorial-segmented-control", `editorial-segmented-control--${size}`, className].filter(Boolean).join(" ")} role="group" aria-label={label}>
-    {options.map((option) => <button key={option.value} type="button" className={`editorial-segmented-option${option.value === value ? " is-active" : ""}`} aria-pressed={option.value === value} onClick={() => onChange(option.value)}>{option.label}</button>)}
+    {options.map((option) => <PressableOption key={option.value} value={option.value} label={option.label} active={option.value === value} onChange={onChange} />)}
   </div>;
 }
