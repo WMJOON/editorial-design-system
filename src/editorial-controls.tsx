@@ -40,13 +40,14 @@ export function EditorialInput({ className, id, label, size = "md", type = "text
 export type EditorialTextAreaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "children"> & {
   label: string;
   size?: EditorialControlSize;
+  labelHidden?: boolean;
 };
 
-export function EditorialTextArea({ className, id, label, size = "md", ...props }: EditorialTextAreaProps) {
+export function EditorialTextArea({ className, id, label, size = "md", labelHidden = false, ...props }: EditorialTextAreaProps) {
   const generatedId = useId();
   const inputId = id ?? generatedId;
   return <label className="editorial-input-field" htmlFor={inputId}>
-    <span>{label}</span>
+    <span className={labelHidden ? "editorial-visually-hidden" : undefined}>{label}</span>
     <textarea {...props} id={inputId} className={["editorial-textarea", `editorial-input--${size}`, className].filter(Boolean).join(" ")} />
   </label>;
 }

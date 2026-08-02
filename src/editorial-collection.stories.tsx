@@ -19,4 +19,3 @@ type Story = StoryObj<typeof meta>;
 
 export const ListWithExcerpts: Story = {};
 export const CoverCards: Story = { args: { defaultView: "grid", showExcerpt: false } };
-export const CompactTopicArchive: Story = { args: { heading: undefined, countLabel: "45 notes", showExcerpt: false, loadMoreHref: undefined } };

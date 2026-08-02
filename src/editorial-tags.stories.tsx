@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { EditorialTags } from "./editorial-components.js";
-import { EditorialThemeSelector } from "./theme-selector.js";
 
-const meta = { title: "Molecules/Metadata groups", parameters: { layout: "padded" } } satisfies Meta;
+const meta = { title: "Molecules/Metadata groups/Tags", component: EditorialTags, args: { tags: ["AI-native work", "Knowledge systems", "Research"], size: "md" }, parameters: { layout: "padded" } } satisfies Meta<typeof EditorialTags>;
 export default meta;
-type Story = StoryObj;
-
-export const Tags: Story = { render: () => <EditorialTags tags={["AI-native work", "Knowledge systems", "Research"]} /> };
-export const ThemeSelector: Story = { render: () => <EditorialThemeSelector storageKey="storybook-theme" /> };
+type Story = StoryObj<typeof meta>;
+export const Default: Story = {};

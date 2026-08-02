@@ -5,6 +5,10 @@ export { EditorialCheckbox, EditorialInput, EditorialSegmentedControl, Editorial
 export type { EditorialCheckboxProps, EditorialInputProps, EditorialSegmentedControlProps, EditorialSegmentedOption, EditorialSelectOption, EditorialSelectProps, EditorialTextAreaProps } from "./editorial-controls.js";
 export { EditorialCollection } from "./editorial-collection.js";
 export type { EditorialCollectionItem, EditorialCollectionProps } from "./editorial-collection.js";
+export { EditorialCollectionHeader } from "./editorial-collection-header.js";
+export type { EditorialCollectionHeaderProps, EditorialCollectionView } from "./editorial-collection-header.js";
+export { EditorialCollectionCard, EditorialCollectionCardGrid, EditorialCollectionList, EditorialCollectionListItem } from "./editorial-collection-items.js";
+export type { EditorialCollectionCardProps, EditorialCollectionListItemProps } from "./editorial-collection-items.js";
 export { EditorialModal } from "./editorial-modal.js";
 export type { EditorialModalProps, EditorialModalSize } from "./editorial-modal.js";
 export { EditorialContentCard, EditorialEditorShell, EditorialKanbanBoard, EditorialMetricStrip } from "./editorial-operations.js";
@@ -12,5 +16,3 @@ export type { EditorialKanbanCard, EditorialKanbanColumn, EditorialMetric } from
 export { EditorialArticle, EditorialArticleHeader, EditorialBadge, EditorialNav, EditorialTag, EditorialTags } from "./editorial-components.js";
 export type { EditorialLink } from "./editorial-components.js";
 export type { EditorialMetadataSize } from "./editorial-components.js";
-export { EditorialThemeSelector } from "./theme-selector.js";
-export type { EditorialThemePreference } from "./theme-selector.js";

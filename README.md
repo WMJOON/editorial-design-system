@@ -47,7 +47,7 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 - `EditorialTags`: dot-separated topical metadata group, composed from `EditorialTag`.
 - `EditorialSegmentedControl`: a compact fixed-option selection control.
 - `EditorialNav`: brand, navigation links, and trailing actions.
-- `EditorialThemeSelector`: persistent `라이트 | 다크 | 시스템` preference; system is the default.
+- `EditorialSegmentedControl`: use this for `라이트 | 다크 | 시스템`; persistence belongs to each consuming application.
 - `EditorialMetricStrip` and `EditorialContentCard`: operations metadata and content units.
 
 ### Organisms

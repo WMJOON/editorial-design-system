@@ -1,6 +1,6 @@
 {
   "name": "@wmjoon/editorial-design-system",
-  "version": "0.1.23",
+  "version": "0.1.25",
   "description": "Shared editorial tokens and Markdown renderer for WMJOON properties.",
   "license": "MIT",
   "private": false,
@@ -17,11 +17,7 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./editorial.css": "./editorial.css",
-    "./theme-selector": {
-      "types": "./dist/theme-selector.d.ts",
-      "default": "./dist/theme-selector.js"
-    }
+    "./editorial.css": "./editorial.css"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
