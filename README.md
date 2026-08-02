@@ -1,6 +1,16 @@
 # Editorial Design System
 
-Shared editorial tokens, Markdown rendering, and React components for `personal-site` and `content-broadcast-hub`.
+The shared visual language behind [wmjoons.com](https://wmjoons.com): semantic color tokens, Korean editorial typography, accessible content primitives, and a Markdown renderer for Next.js.
+
+It is designed to keep a public reading experience and a local publishing console visually coherent without forcing product-specific UI into the same component set.
+
+## What it demonstrates
+
+- Semantic light/dark color tokens, including warm operations surfaces
+- Clear title roles: display, page `h1`, document `h2`, and document `h3`
+- Korean-first typography with Noto Sans KR and Noto Serif KR
+- Markdown support for GFM tables, KaTeX, Mermaid, and literal single tildes
+- Reusable article, navigation, tag, and badge primitives
 
 ## Local development
 
@@ -59,3 +69,7 @@ Use semantic tokens in consumer styles rather than literal hex values:
 ## Releases
 
 Create and push a `v*` tag after updating `package.json`. GitHub Actions publishes the scoped private package to GitHub Packages.
+
+## License
+
+MIT. See [LICENSE](./LICENSE).

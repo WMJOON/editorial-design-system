@@ -2,7 +2,7 @@
   "name": "@wmjoon/editorial-design-system",
   "version": "0.1.9",
   "description": "Shared editorial tokens and Markdown renderer for WMJOON properties.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": false,
   "type": "module",
   "files": ["dist", "editorial.css"],
