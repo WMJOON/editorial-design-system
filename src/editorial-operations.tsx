@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
+import { EditorialBadge, EditorialTags } from "./editorial-components.js";
 
 export type EditorialMetric = { value: string | number; label: string };
-export type EditorialKanbanCard = { id: string; date: string; type: string; title: string; taxonomy?: string };
+export type EditorialKanbanCard = { id: string; date: string; type: string; title: string; taxonomy?: string[] };
 export type EditorialKanbanColumn = { id: string; label: string; description: string; count: number; items: EditorialKanbanCard[] };
 
 export function EditorialMetricStrip({ items }: { items: EditorialMetric[] }) {
@@ -9,7 +10,7 @@ export function EditorialMetricStrip({ items }: { items: EditorialMetric[] }) {
 }
 
 export function EditorialContentCard({ item }: { item: EditorialKanbanCard }) {
-  return <article className="editorial-ops-card"><div className="editorial-ops-card-meta"><span>{item.date}</span><b>{item.type}</b></div><h4>{item.title}</h4>{item.taxonomy && <p className="editorial-ops-card-tags">{item.taxonomy}</p>}</article>;
+  return <article className="editorial-ops-card"><div className="editorial-ops-card-meta"><time dateTime={item.date}>{item.date}</time><EditorialBadge size="sm">{item.type}</EditorialBadge></div><h4>{item.title}</h4>{item.taxonomy && <EditorialTags tags={item.taxonomy} size="sm" className="editorial-ops-card-tags" />}</article>;
 }
 
 export function EditorialKanbanBoard({ columns }: { columns: EditorialKanbanColumn[] }) {
