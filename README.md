@@ -10,7 +10,7 @@ It is designed to keep a public reading experience and a local publishing consol
 - Clear title roles: display plus a complete document hierarchy from `h1` through `h6`
 - Korean-first typography with Noto Sans KR and Noto Serif KR
 - Markdown support for GFM tables, KaTeX, Mermaid, and literal single tildes
-- Reusable article, navigation, tag, and badge primitives
+- Atomic Design taxonomy: foundations, atoms, molecules, organisms, and app patterns
 
 ## Local development
 
@@ -20,7 +20,7 @@ npm run build
 npm run storybook
 ```
 
-Storybook starts at [http://localhost:6006](http://localhost:6006). It is the visual catalogue for typography, foundations, primitives, editorial organisms, and backoffice patterns. Build its deployable static output with `npm run build-storybook`.
+Storybook starts at [http://localhost:6006](http://localhost:6006). It is organized as `Foundations → Atoms → Molecules → Organisms → Patterns`, separating reusable components from app-bound interaction flows. Build its deployable static output with `npm run build-storybook`.
 
 ## Consumer setup
 
@@ -35,15 +35,25 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 
 ## Components
 
+### Atoms
+
+- `EditorialTag`: body-sized topical metadata.
+- `EditorialBadge`: compact status or count marker.
+
+### Molecules
+
+- `EditorialTags`: dot-separated topical metadata group.
+- `EditorialNav`: brand, navigation links, and trailing actions.
+- `EditorialThemeSelector`: persistent `라이트 | 다크 | 시스템` preference; system is the default.
+- `EditorialMetricStrip` and `EditorialContentCard`: operations metadata and content units.
+
+### Organisms
+
 - `EditorialMarkdown`: GFM, literal single tildes, tables, KaTeX, and Mermaid.
 - `EditorialArticle`: page-title header and rendered body.
 - `EditorialArticleHeader`: metadata, page title, subtitle, and tags.
-- `EditorialNav`: brand and navigation links.
-- `EditorialTags`: shared tag treatment.
-- `EditorialTag`: body-sized topical metadata; tags are separated by dots rather than presented as badges.
-- `EditorialBadge`: compact status/count marker, intentionally distinct from a tag.
-- `EditorialThemeSelector`: persistent `라이트 | 다크 | 시스템` preference; system is the default.
 - `EditorialCollection`: shared list/card content collection for feeds, archives, and topic pages.
+- `EditorialKanbanBoard` and `EditorialEditorShell`: presentational operations organisms; the backoffice app owns its drag, save, and filesystem API behavior.
 
 `EditorialMarkdown` standardizes typography, dark mode, and a 760px reading measure. The components are intentionally editorial primitives; product-specific dashboard UI remains in each consuming app.
 
