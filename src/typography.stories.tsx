@@ -12,7 +12,7 @@ const rows = [
   ["Code", "ui-monospace / 0.85rem", <pre className="type-specimen-code">claim: "AI 인용은 추천을 보장하지 않는다."\nstatus: verified</pre>],
 ] as const;
 
-const meta = { title: "Typography/Hierarchy & reading", parameters: { layout: "padded" } } satisfies Meta;
+const meta = { title: "Foundations/Typography", parameters: { layout: "padded" } } satisfies Meta;
 export default meta;
 type Story = StoryObj;
 
