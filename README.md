@@ -17,7 +17,10 @@ It is designed to keep a public reading experience and a local publishing consol
 ```bash
 npm install
 npm run build
+npm run storybook
 ```
+
+Storybook starts at [http://localhost:6006](http://localhost:6006). It is the visual catalogue for foundations, primitives, and editorial organisms. Build its deployable static output with `npm run build-storybook`.
 
 ## Consumer setup
 
@@ -40,6 +43,7 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 - `EditorialTag`: body-sized topical metadata; tags are separated by dots rather than presented as badges.
 - `EditorialBadge`: compact status/count marker, intentionally distinct from a tag.
 - `EditorialThemeSelector`: persistent `라이트 | 다크 | 시스템` preference; system is the default.
+- `EditorialCollection`: shared list/card content collection for feeds, archives, and topic pages.
 
 `EditorialMarkdown` standardizes typography, dark mode, and a 760px reading measure. The components are intentionally editorial primitives; product-specific dashboard UI remains in each consuming app.
 
@@ -71,6 +75,16 @@ Use semantic tokens in consumer styles rather than literal hex values:
 ## Releases
 
 Create and push a `v*` tag after updating `package.json`. GitHub Actions publishes the scoped private package to GitHub Packages.
+
+## Storybook deployment
+
+The catalogue is intentionally independent from the reader and the backoffice. Create a Cloudflare Pages project from this repository with:
+
+- Build command: `npm run build-storybook`
+- Build output directory: `storybook-static`
+- Production branch: `main`
+
+No runtime secrets are required. A dedicated hostname such as `design.wmjoons.com` keeps the component reference separate from `wmjoons.com`.
 
 ## License
 
