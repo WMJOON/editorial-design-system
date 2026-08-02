@@ -69,11 +69,13 @@ export type EditorialSegmentedControlProps = {
   options: EditorialSegmentedOption[];
   value: string;
   onChange: (value: string) => void;
+  size?: EditorialControlSize;
+  className?: string;
 };
 
-/** A compact, visible choice for a small fixed option set. */
-export function EditorialSegmentedControl({ label, options, value, onChange }: EditorialSegmentedControlProps) {
-  return <div className="editorial-segmented-control" role="group" aria-label={label}>
-    {options.map((option) => <button key={option.value} type="button" className={option.value === value ? "is-active" : undefined} aria-pressed={option.value === value} onClick={() => onChange(option.value)}>{option.label}</button>)}
+/** A visible, touch-safe choice for a small fixed option set. */
+export function EditorialSegmentedControl({ label, options, value, onChange, size = "md", className }: EditorialSegmentedControlProps) {
+  return <div className={["editorial-segmented-control", `editorial-segmented-control--${size}`, className].filter(Boolean).join(" ")} role="group" aria-label={label}>
+    {options.map((option) => <button key={option.value} type="button" className={`editorial-segmented-option${option.value === value ? " is-active" : ""}`} aria-pressed={option.value === value} onClick={() => onChange(option.value)}>{option.label}</button>)}
   </div>;
 }

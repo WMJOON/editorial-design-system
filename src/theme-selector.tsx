@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { EditorialSegmentedControl } from "./editorial-controls.js";
 
 export type EditorialThemePreference = "light" | "dark" | "system";
 
@@ -35,7 +36,5 @@ export function EditorialThemeSelector({ storageKey = "editorial-theme", label =
     applyThemePreference(next);
   }
 
-  return <div className="editorial-theme-selector" role="group" aria-label={label}>
-    {(Object.keys(themeLabels) as EditorialThemePreference[]).map((option) => <button key={option} className={`editorial-theme-option${preference === option ? " is-active" : ""}`} type="button" aria-pressed={preference === option} onClick={() => select(option)}>{themeLabels[option]}</button>)}
-  </div>;
+  return <EditorialSegmentedControl className="editorial-theme-selector" label={label} value={preference} onChange={(value) => select(value as EditorialThemePreference)} options={(Object.keys(themeLabels) as EditorialThemePreference[]).map((value) => ({ value, label: themeLabels[value] }))} />;
 }
