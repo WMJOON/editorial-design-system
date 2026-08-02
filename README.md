@@ -39,6 +39,7 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 - `EditorialTags`: shared tag treatment.
 - `EditorialTag`: body-sized topical metadata; tags are separated by dots rather than presented as badges.
 - `EditorialBadge`: compact status/count marker, intentionally distinct from a tag.
+- `EditorialThemeSelector`: persistent `라이트 | 다크 | 시스템` preference; system is the default.
 
 `EditorialMarkdown` standardizes typography, dark mode, and a 760px reading measure. The components are intentionally editorial primitives; product-specific dashboard UI remains in each consuming app.
 

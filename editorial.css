@@ -78,6 +78,11 @@
 .editorial-nav-links { display: flex; gap: 24px; }
 .editorial-nav a:hover { color: var(--editorial-link, #1d4ed8); }
 .editorial-nav-trailing { margin-left: auto; padding-left: 24px; }
+.editorial-theme-selector { display: inline-flex; align-items: center; padding: 2px; border: 1px solid var(--editorial-border); background: var(--editorial-bg-surface); color: var(--editorial-fg); font: .67rem/1.2 "Noto Sans KR", Arial, sans-serif; }
+.editorial-theme-option { min-height: 28px; border: 0; background: transparent; color: var(--editorial-fg-muted); cursor: pointer; padding: 4px 7px; font: inherit; white-space: nowrap; }
+.editorial-theme-option:hover { color: var(--editorial-fg); }
+.editorial-theme-option.is-active { background: var(--editorial-bg-subtle); color: var(--editorial-fg); font-weight: 700; }
+.editorial-theme-option:focus-visible { outline: 2px solid var(--editorial-accent); outline-offset: 1px; }
 
 /* Display is a brand/landing treatment. Document hierarchy stays h1 → title-1, h2 → title-2. */
 .editorial-display,.editorial-title-1,.editorial-title-2,.editorial-title-3 { margin: 0; font-family: "Noto Serif KR", Georgia, serif; font-weight: 600; letter-spacing: -.02em; }
@@ -126,6 +131,7 @@
 @media (max-width: 720px) {
   .editorial-nav { min-height: 62px; }
   .editorial-nav-links { gap: 12px; font-size: .73rem; }
+  .editorial-theme-option { min-height: 27px; padding-inline: 6px; }
   .editorial-article { width: min(100% - 32px, 760px); }
   .editorial-article-header { padding-top: 57px; }
   .editorial-display { font-size: clamp(3.15rem, 15vw, 4.7rem); }
