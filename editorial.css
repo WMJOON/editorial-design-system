@@ -3,36 +3,74 @@
 
 :root {
   color-scheme: light dark;
-  --editorial-ink: #27272a;
-  --editorial-muted: #656565;
-  --editorial-line: #d9d9d9;
-  --editorial-paper: #fff;
-  --editorial-soft: #f7f7f7;
+  /* Semantic color tokens — consumer apps should use these, not hex values. */
+  --editorial-fg: #27272a;
+  --editorial-fg-muted: #656565;
+  --editorial-border: #d9d9d9;
+  --editorial-bg-canvas: #fff;
+  --editorial-bg-surface: #fff;
+  --editorial-bg-subtle: #f7f7f7;
   --editorial-accent: #f48120;
+  --editorial-on-accent: #fff;
   --editorial-link: #1d4ed8;
+  --editorial-code-bg: #1d1c1a;
+  --editorial-code-fg: #f5f0e7;
+  --editorial-overlay: rgb(23 23 23 / .48);
+  --editorial-warning-bg: #f9e8d9;
+  --editorial-warning-fg: #71330e;
+  --editorial-canvas-warm: #f4f1ea;
+  --editorial-surface-warm: #fffdf8;
+  --editorial-surface-strong: #242321;
+
+  /* Legacy aliases retained for existing editorial components. */
+  --editorial-ink: var(--editorial-fg);
+  --editorial-muted: var(--editorial-fg-muted);
+  --editorial-line: var(--editorial-border);
+  --editorial-paper: var(--editorial-bg-surface);
+  --editorial-soft: var(--editorial-bg-subtle);
 }
 
 /* Consumers may set data-editorial-theme="light" or "dark" on html/body to override system preference. */
 :root[data-editorial-theme="dark"], [data-editorial-theme="dark"] {
   color-scheme: dark;
-  --editorial-ink: #f4f1ec;
-  --editorial-muted: #b5b1aa;
-  --editorial-line: #3c3a37;
-  --editorial-paper: #161514;
-  --editorial-soft: #22201e;
+  --editorial-fg: #f4f1ec;
+  --editorial-fg-muted: #b5b1aa;
+  --editorial-border: #3c3a37;
+  --editorial-bg-canvas: #161514;
+  --editorial-bg-surface: #161514;
+  --editorial-bg-subtle: #22201e;
   --editorial-accent: #f6a45a;
+  --editorial-on-accent: #161514;
   --editorial-link: #9bc5ff;
+  --editorial-code-bg: #1d1c1a;
+  --editorial-code-fg: #f5f0e7;
+  --editorial-overlay: rgb(0 0 0 / .58);
+  --editorial-warning-bg: #3a281b;
+  --editorial-warning-fg: #ffd3a7;
+  --editorial-canvas-warm: #171716;
+  --editorial-surface-warm: #201f1d;
+  --editorial-surface-strong: #2a2825;
 }
 
 :root[data-editorial-theme="light"], [data-editorial-theme="light"] {
   color-scheme: light;
-  --editorial-ink: #27272a;
-  --editorial-muted: #656565;
-  --editorial-line: #d9d9d9;
-  --editorial-paper: #fff;
-  --editorial-soft: #f7f7f7;
+  --editorial-fg: #27272a;
+  --editorial-fg-muted: #656565;
+  --editorial-border: #d9d9d9;
+  --editorial-bg-canvas: #fff;
+  --editorial-bg-surface: #fff;
+  --editorial-bg-subtle: #f7f7f7;
   --editorial-accent: #f48120;
+  --editorial-on-accent: #fff;
   --editorial-link: #1d4ed8;
+  --editorial-code-bg: #1d1c1a;
+  --editorial-code-fg: #f5f0e7;
+  --editorial-overlay: rgb(23 23 23 / .48);
+  --editorial-warning-bg: #f9e8d9;
+  --editorial-warning-fg: #71330e;
+  --editorial-canvas-warm: #f4f1ea;
+  --editorial-surface-warm: #fffdf8;
+  --editorial-surface-strong: #242321;
 }
 
 .editorial-nav { display: flex; align-items: center; justify-content: space-between; min-height: 68px; border-bottom: 1px solid var(--editorial-line, #d9d9d9); color: var(--editorial-ink, #27272a); font: .83rem/1.2 "Noto Sans KR", Arial, sans-serif; }
@@ -98,6 +136,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-editorial-theme="light"]) { --editorial-ink: #f4f1ec; --editorial-muted: #b5b1aa; --editorial-line: #3c3a37; --editorial-paper: #161514; --editorial-soft: #22201e; --editorial-accent: #f6a45a; --editorial-link: #9bc5ff; }
+  :root:not([data-editorial-theme="light"]) { --editorial-fg: #f4f1ec; --editorial-fg-muted: #b5b1aa; --editorial-border: #3c3a37; --editorial-bg-canvas: #161514; --editorial-bg-surface: #161514; --editorial-bg-subtle: #22201e; --editorial-accent: #f6a45a; --editorial-on-accent: #161514; --editorial-link: #9bc5ff; --editorial-code-bg: #1d1c1a; --editorial-code-fg: #f5f0e7; --editorial-overlay: rgb(0 0 0 / .58); --editorial-warning-bg: #3a281b; --editorial-warning-fg: #ffd3a7; --editorial-canvas-warm: #171716; --editorial-surface-warm: #201f1d; --editorial-surface-strong: #2a2825; }
   .editorial-content .katex { color: var(--editorial-ink); }
 }

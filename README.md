@@ -47,6 +47,15 @@ Markdown follows the same scale automatically: `#` renders as `title-1`, `##` as
 
 Every component uses the shared `--editorial-*` color tokens, so navigation, headers, tags, Markdown, tables, and diagrams follow the same light/dark palette. The system preference is used by default; set `data-editorial-theme="light"` or `data-editorial-theme="dark"` on `html` or a wrapping element to override it.
 
+Use semantic tokens in consumer styles rather than literal hex values:
+
+- Foreground: `--editorial-fg`, `--editorial-fg-muted`
+- Surfaces: `--editorial-bg-canvas`, `--editorial-bg-surface`, `--editorial-bg-subtle`
+- Structure: `--editorial-border`, `--editorial-overlay`
+- Interaction: `--editorial-accent`, `--editorial-on-accent`, `--editorial-link`
+- Editing and feedback: `--editorial-code-bg`, `--editorial-code-fg`, `--editorial-warning-bg`, `--editorial-warning-fg`
+- Warm operations surfaces: `--editorial-canvas-warm`, `--editorial-surface-warm`, `--editorial-surface-strong`
+
 ## Releases
 
 Create and push a `v*` tag after updating `package.json`. GitHub Actions publishes the scoped private package to GitHub Packages.
