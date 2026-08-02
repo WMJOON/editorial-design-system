@@ -84,12 +84,15 @@
 .editorial-theme-option.is-active { background: var(--editorial-bg-subtle); color: var(--editorial-fg); font-weight: 700; }
 .editorial-theme-option:focus-visible { outline: 2px solid var(--editorial-accent); outline-offset: 1px; }
 
-/* Display is a brand/landing treatment. Document hierarchy stays h1 → title-1, h2 → title-2. */
-.editorial-display,.editorial-title-1,.editorial-title-2,.editorial-title-3 { margin: 0; font-family: "Noto Serif KR", Georgia, serif; font-weight: 600; letter-spacing: -.02em; }
+/* Display is a brand/landing treatment. Document hierarchy stays h1 → h6. */
+.editorial-display,.editorial-title-1,.editorial-title-2,.editorial-title-3,.editorial-title-4,.editorial-title-5,.editorial-title-6 { margin: 0; font-family: "Noto Serif KR", Georgia, serif; font-weight: 600; letter-spacing: -.02em; }
 .editorial-display { font-size: clamp(3.5rem, 7.4vw, 6.9rem); line-height: 1.03; }
 .editorial-title-1,.editorial-content h1 { max-width: 800px; font-family: "Noto Serif KR", Georgia, serif; font-size: clamp(2rem, 3vw, 2.75rem); font-weight: 600; letter-spacing: -.02em; line-height: 1.22; text-wrap: balance; }
 .editorial-title-2,.editorial-content h2 { font-family: "Noto Serif KR", Georgia, serif; font-size: 1.72rem; font-weight: 600; letter-spacing: -.02em; line-height: 1.15; }
 .editorial-title-3,.editorial-content h3 { font-family: "Noto Serif KR", Georgia, serif; font-size: 1.34rem; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; }
+.editorial-title-4,.editorial-content h4 { font-family: "Noto Sans KR", Arial, sans-serif; font-size: 1.12rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.35; }
+.editorial-title-5,.editorial-content h5 { font-family: "Noto Sans KR", Arial, sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: -.01em; line-height: 1.4; }
+.editorial-title-6,.editorial-content h6 { font-family: "Noto Sans KR", Arial, sans-serif; font-size: .82rem; font-weight: 700; letter-spacing: .04em; line-height: 1.45; text-transform: uppercase; }
 
 .editorial-article { width: min(760px, calc(100% - 48px)); margin: 0 auto; color: var(--editorial-ink, #27272a); }
 .editorial-article-header { padding: 76px 0 43px; border-bottom: 1px solid var(--editorial-line, #d9d9d9); font-family: "Noto Sans KR", Arial, sans-serif; }
@@ -110,7 +113,7 @@
 }
 
 .editorial-content p { margin: 0 0 25px; }
-.editorial-content h1,.editorial-content h2,.editorial-content h3 { margin: 50px 0 17px; }
+.editorial-content h1,.editorial-content h2,.editorial-content h3,.editorial-content h4,.editorial-content h5,.editorial-content h6 { margin: 50px 0 17px; }
 .editorial-content a { color: var(--editorial-link); text-decoration: underline; text-underline-offset: 3px; }
 .editorial-content ul,.editorial-content ol { margin: 0 0 27px; padding-left: 22px; }
 .editorial-content li { margin: 6px 0; }
