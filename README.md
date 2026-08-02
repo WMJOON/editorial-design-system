@@ -7,7 +7,7 @@ It is designed to keep a public reading experience and a local publishing consol
 ## What it demonstrates
 
 - Semantic light/dark color tokens, including warm operations surfaces
-- Clear title roles: display, page `h1`, document `h2`, and document `h3`
+- Clear title roles: display plus a complete document hierarchy from `h1` through `h6`
 - Korean-first typography with Noto Sans KR and Noto Serif KR
 - Markdown support for GFM tables, KaTeX, Mermaid, and literal single tildes
 - Reusable article, navigation, tag, and badge primitives
@@ -51,8 +51,9 @@ The hierarchy is semantic first, and the visual classes make the intent explicit
 - `editorial-title-1`: a document/page `h1`.
 - `editorial-title-2`: an `h2` section title.
 - `editorial-title-3`: an `h3` subsection title.
+- `editorial-title-4` through `editorial-title-6`: increasingly compact subsections and labels.
 
-Markdown follows the same scale automatically: `#` renders as `title-1`, `##` as `title-2`, and `###` as `title-3`. `EditorialArticle` owns its page `h1`; therefore Markdown passed to it should normally start at `##`. The personal-site source adapter removes a leading `#` only when it exactly matches the frontmatter title, preventing duplicated article titles without altering standalone Markdown documents.
+Markdown follows the same scale automatically: `#` through `######` render as `title-1` through `title-6`. `EditorialArticle` owns its page `h1`; therefore Markdown passed to it should normally start at `##`. The personal-site source adapter removes a leading `#` only when it exactly matches the frontmatter title, preventing duplicated article titles without altering standalone Markdown documents.
 
 ## Theme tokens
 
