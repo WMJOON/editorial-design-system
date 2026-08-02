@@ -20,7 +20,7 @@ npm run build
 npm run storybook
 ```
 
-Storybook starts at [http://localhost:6006](http://localhost:6006). It is the visual catalogue for foundations, primitives, and editorial organisms. Build its deployable static output with `npm run build-storybook`.
+Storybook starts at [http://localhost:6006](http://localhost:6006). It is the visual catalogue for typography, foundations, primitives, editorial organisms, and backoffice patterns. Build its deployable static output with `npm run build-storybook`.
 
 ## Consumer setup
 
