@@ -21,7 +21,10 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [(Story, context) => <div className="storybook-canvas" data-editorial-theme={context.globals.theme}><Story /></div>],
+  decorators: [(Story, context) => {
+    const theme = context.globals.theme === "dark" ? "dark" : "light";
+    return <div className="storybook-canvas" data-editorial-theme={theme}><Story /></div>;
+  }],
 };
 
 export default preview;
