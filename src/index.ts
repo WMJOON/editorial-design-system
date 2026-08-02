@@ -1,13 +1,14 @@
 export { EditorialMarkdown } from "./editorial-markdown.js";
 export { EditorialButton, EditorialIconButton } from "./editorial-actions.js";
-export type { EditorialButtonProps, EditorialButtonVariant, EditorialIconButtonProps } from "./editorial-actions.js";
-export { EditorialSegmentedControl, EditorialSelect } from "./editorial-controls.js";
-export type { EditorialSegmentedControlProps, EditorialSegmentedOption, EditorialSelectOption, EditorialSelectProps } from "./editorial-controls.js";
+export type { EditorialButtonProps, EditorialButtonVariant, EditorialControlSize, EditorialIconButtonProps } from "./editorial-actions.js";
+export { EditorialCheckbox, EditorialInput, EditorialSegmentedControl, EditorialSelect, EditorialTextArea } from "./editorial-controls.js";
+export type { EditorialCheckboxProps, EditorialInputProps, EditorialSegmentedControlProps, EditorialSegmentedOption, EditorialSelectOption, EditorialSelectProps, EditorialTextAreaProps } from "./editorial-controls.js";
 export { EditorialCollection } from "./editorial-collection.js";
 export type { EditorialCollectionItem, EditorialCollectionProps } from "./editorial-collection.js";
 export { EditorialContentCard, EditorialEditorShell, EditorialKanbanBoard, EditorialMetricStrip } from "./editorial-operations.js";
 export type { EditorialKanbanCard, EditorialKanbanColumn, EditorialMetric } from "./editorial-operations.js";
 export { EditorialArticle, EditorialArticleHeader, EditorialBadge, EditorialNav, EditorialTag, EditorialTags } from "./editorial-components.js";
 export type { EditorialLink } from "./editorial-components.js";
+export type { EditorialMetadataSize } from "./editorial-components.js";
 export { EditorialThemeSelector } from "./theme-selector.js";
 export type { EditorialThemePreference } from "./theme-selector.js";

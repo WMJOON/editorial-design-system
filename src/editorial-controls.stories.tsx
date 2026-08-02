@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { EditorialSegmentedControl, EditorialSelect } from "./editorial-controls.js";
 
 const meta = {
-  title: "Molecules/Controls",
+  title: "Molecules/Selection",
   component: EditorialSelect,
   parameters: { layout: "centered" },
 } satisfies Meta<typeof EditorialSelect>;

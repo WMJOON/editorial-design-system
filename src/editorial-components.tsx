@@ -16,12 +16,14 @@ export function EditorialTags({ tags }: { tags: string[] }) {
   return <div className="editorial-tags" aria-label="태그">{tags.map((tag) => <EditorialTag key={tag}>{tag}</EditorialTag>)}</div>;
 }
 
-export function EditorialTag({ children }: { children: ReactNode }) {
-  return <span className="editorial-tag">{children}</span>;
+export type EditorialMetadataSize = "sm" | "md" | "lg";
+
+export function EditorialTag({ children, size = "md" }: { children: ReactNode; size?: EditorialMetadataSize }) {
+  return <span className={`editorial-tag editorial-tag--${size}`}>{children}</span>;
 }
 
-export function EditorialBadge({ children }: { children: ReactNode }) {
-  return <span className="editorial-badge">{children}</span>;
+export function EditorialBadge({ children, size = "md" }: { children: ReactNode; size?: EditorialMetadataSize }) {
+  return <span className={`editorial-badge editorial-badge--${size}`}>{children}</span>;
 }
 
 export function EditorialArticleHeader({ category, date, title, subtitle, tags = [] }: { category: string; date: string; title: string; subtitle?: string; tags?: string[] }) {
