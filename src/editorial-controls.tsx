@@ -94,6 +94,7 @@ function PressableOption({ active, label, value, onChange }: PressableOptionProp
     {...pressHandlers}
     type="button"
     className={`editorial-segmented-option${active ? " is-active" : ""}`}
+    data-editorial-value={value}
     aria-pressed={active}
   >{label}</button>;
 }
