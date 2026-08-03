@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef } from "react";
 import type { ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { EditorialIconButton } from "./editorial-actions.js";
 
 export type EditorialModalSize = "sm" | "md" | "lg";
@@ -21,7 +22,8 @@ export type EditorialModalProps = {
 
 /**
  * A controlled modal pattern for focused, short-lived work such as editing a
- * content file. It owns the backdrop, initial focus, and Escape handling;
+ * content file. It owns the backdrop and Escape handling; callers retain the
+ * focus of the control that opened it or the field the user selects.
  * callers own open state and the primary/secondary actions.
  */
 export function EditorialModal({
@@ -37,31 +39,34 @@ export function EditorialModal({
   bodyClassName,
 }: EditorialModalProps) {
   const titleId = useId();
-  const dialogRef = useRef<HTMLElement>(null);
+  const onCloseRef = useRef(onClose);
+
+  // Consumers commonly create `onClose` inline. Keep the latest callback
+  // without treating that identity change as a modal lifecycle change: doing
+  // so would run the focus-restoration cleanup on every editor keystroke.
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   useEffect(() => {
     if (!open) return;
 
-    const previouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") onCloseRef.current();
     };
 
     document.addEventListener("keydown", closeOnEscape);
-    requestAnimationFrame(() => dialogRef.current?.focus());
-
     return () => {
       document.removeEventListener("keydown", closeOnEscape);
-      if (previouslyFocused?.isConnected) previouslyFocused.focus();
     };
-  }, [onClose, open]);
+  }, [open]);
 
-  if (!open) return null;
+  if (!open || typeof document === "undefined") return null;
 
-  return <div className="editorial-modal-backdrop" role="presentation" onMouseDown={(event) => {
+  return createPortal(<div className="editorial-modal-backdrop" role="presentation" onMouseDown={(event) => {
     if (event.target === event.currentTarget) onClose();
   }}>
-    <section ref={dialogRef} className={["editorial-modal", `editorial-modal--${size}`, className].filter(Boolean).join(" ")} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}>
+    <section className={["editorial-modal", `editorial-modal--${size}`, className].filter(Boolean).join(" ")} role="dialog" aria-modal="true" aria-labelledby={titleId}>
       <header className="editorial-modal-header">
         <div>
           {eyebrow && <p className="editorial-modal-eyebrow">{eyebrow}</p>}
@@ -74,5 +79,5 @@ export function EditorialModal({
       <div className={["editorial-modal-body", bodyClassName].filter(Boolean).join(" ")}>{children}</div>
       {footer && <footer className="editorial-modal-footer">{footer}</footer>}
     </section>
-  </div>;
+  </div>, document.body);
 }
