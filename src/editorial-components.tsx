@@ -3,12 +3,28 @@ import { EditorialMarkdown } from "./editorial-markdown.js";
 
 export type EditorialLink = { href: string; label: string };
 
-export function EditorialNav({ brand, brandHref = "/", links = [], trailing }: { brand: string; brandHref?: string; links?: EditorialLink[]; trailing?: ReactNode }) {
+export type EditorialNavProps = { brand: string; brandHref?: string; links?: EditorialLink[]; trailing?: ReactNode };
+
+/**
+ * The navigation molecule. Use EditorialSiteHeader for a complete page shell
+ * when the navigation needs its own responsive, centred content boundary.
+ */
+export function EditorialNav({ brand, brandHref = "/", links = [], trailing }: EditorialNavProps) {
   return <nav className="editorial-nav" aria-label="주요 메뉴">
     <a className="editorial-wordmark" href={brandHref}>{brand}</a>
     <div className="editorial-nav-links">{links.map((link) => <a key={`${link.href}-${link.label}`} href={link.href}>{link.label}</a>)}</div>
     {trailing && <div className="editorial-nav-trailing">{trailing}</div>}
   </nav>;
+}
+
+/**
+ * The shared page header. Keeping the content width and responsive navigation
+ * in the design system prevents each consumer from rebuilding a fragile shell.
+ */
+export function EditorialSiteHeader({ className, ...nav }: EditorialNavProps & { className?: string }) {
+  return <header className={["editorial-site-header", className].filter(Boolean).join(" ")}>
+    <div className="editorial-site-header__inner"><EditorialNav {...nav} /></div>
+  </header>;
 }
 
 export function EditorialTags({ tags, className, size = "md" }: { tags: string[]; className?: string; size?: EditorialMetadataSize }) {

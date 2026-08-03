@@ -73,6 +73,7 @@
   --editorial-surface-strong: #242321;
 }
 
+.editorial-site-header { width: min(1100px, calc(100% - 48px)); margin-inline: auto; }
 .editorial-nav { display: flex; align-items: center; justify-content: space-between; min-height: 68px; border-bottom: 1px solid var(--editorial-line, #d9d9d9); color: var(--editorial-ink, #27272a); font: .83rem/1.2 "Noto Sans KR", Arial, sans-serif; }
 .editorial-wordmark { color: inherit; font-weight: 700; letter-spacing: .08em; text-decoration: none; }
 .editorial-nav-links { display: flex; gap: 24px; }
@@ -183,8 +184,10 @@
 .editorial-mermaid-error summary { cursor: pointer; font-weight: 600; }
 
 @media (max-width: 720px) {
-  .editorial-nav { min-height: 62px; }
-  .editorial-nav-links { gap: 12px; font-size: .73rem; }
+  .editorial-site-header { width: min(100% - 32px, 1100px); }
+  .editorial-nav { align-items: flex-start; flex-wrap: wrap; gap: 12px; min-height: 62px; padding-block: 14px; }
+  .editorial-nav-links { flex: 1 1 auto; flex-wrap: wrap; gap: 10px 12px; font-size: .73rem; }
+  .editorial-nav-trailing { flex: 0 0 auto; margin-left: auto; padding-left: 0; }
   .editorial-theme-option { min-height: 27px; padding-inline: 6px; }
   .editorial-article { width: min(100% - 32px, 760px); }
   .editorial-article-header { padding-top: 57px; }

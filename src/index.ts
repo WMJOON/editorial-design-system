@@ -13,6 +13,6 @@ export { EditorialModal } from "./editorial-modal.js";
 export type { EditorialModalProps, EditorialModalSize } from "./editorial-modal.js";
 export { EditorialContentCard, EditorialEditorShell, EditorialKanbanBoard, EditorialMetricStrip } from "./editorial-operations.js";
 export type { EditorialKanbanCard, EditorialKanbanColumn, EditorialMetric } from "./editorial-operations.js";
-export { EditorialArticle, EditorialArticleHeader, EditorialBadge, EditorialNav, EditorialTag, EditorialTags } from "./editorial-components.js";
-export type { EditorialLink } from "./editorial-components.js";
+export { EditorialArticle, EditorialArticleHeader, EditorialBadge, EditorialNav, EditorialSiteHeader, EditorialTag, EditorialTags } from "./editorial-components.js";
+export type { EditorialLink, EditorialNavProps } from "./editorial-components.js";
 export type { EditorialMetadataSize } from "./editorial-components.js";
