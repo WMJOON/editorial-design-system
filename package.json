@@ -1,6 +1,6 @@
 {
   "name": "@wmjoon/editorial-design-system",
-  "version": "0.1.33",
+  "version": "0.1.34",
   "description": "Shared editorial tokens and Markdown renderer for WMJOON properties.",
   "license": "MIT",
   "private": false,
