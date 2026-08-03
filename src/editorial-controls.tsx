@@ -1,7 +1,8 @@
 "use client";
 
-import { useId, useRef, type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes } from "react";
+import { useId, type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes } from "react";
 import type { EditorialControlSize } from "./editorial-actions.js";
+import { useEditorialPress } from "./editorial-press.js";
 
 export type EditorialSelectOption = { value: string; label: string };
 
@@ -87,24 +88,13 @@ type PressableOptionProps = {
  * Keyboard and mouse interaction continue through the regular click path.
  */
 function PressableOption({ active, label, value, onChange }: PressableOptionProps) {
-  const lastTouchPress = useRef(0);
-
-  function press() {
-    onChange(value);
-  }
+  const pressHandlers = useEditorialPress(() => onChange(value));
 
   return <button
+    {...pressHandlers}
     type="button"
     className={`editorial-segmented-option${active ? " is-active" : ""}`}
     aria-pressed={active}
-    onTouchEnd={() => {
-      lastTouchPress.current = Date.now();
-      press();
-    }}
-    onClick={() => {
-      if (Date.now() - lastTouchPress.current < 700) return;
-      press();
-    }}
   >{label}</button>;
 }
 

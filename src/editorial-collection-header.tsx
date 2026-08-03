@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import type { ReactNode } from "react";
+import { useEditorialPress } from "./editorial-press.js";
 
 export type EditorialCollectionView = "list" | "grid";
 
@@ -15,19 +16,12 @@ function ListIcon() { return <svg viewBox="0 0 24 24" aria-hidden="true"><path d
 function GridIcon() { return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1" /><rect x="14" y="4" width="6" height="6" rx="1" /><rect x="4" y="14" width="6" height="6" rx="1" /><rect x="14" y="14" width="6" height="6" rx="1" /></svg>; }
 
 function ViewButton({ active, label, onPress, children }: { active: boolean; label: string; onPress: () => void; children: ReactNode }) {
-  const lastTouchPress = useRef(0);
+  const pressHandlers = useEditorialPress(onPress);
   return <button
+    {...pressHandlers}
     type="button"
     className={active ? "is-active" : ""}
     aria-pressed={active}
-    onTouchEnd={() => {
-      lastTouchPress.current = Date.now();
-      onPress();
-    }}
-    onClick={() => {
-      if (Date.now() - lastTouchPress.current < 700) return;
-      onPress();
-    }}
   >{children}<span className="editorial-visually-hidden">{label}</span></button>;
 }
 
