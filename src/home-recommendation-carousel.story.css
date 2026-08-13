@@ -51,66 +51,10 @@
   display: none;
 }
 
-.storybook-home-recommendation-carousel .home-recommendation-card {
-  display: grid;
+.storybook-home-recommendation-carousel .home-recommendations-track > .editorial-collection-card {
   flex: 0 0 clamp(280px, 30vw, 360px);
-  grid-template-rows: 180px minmax(220px, 1fr);
   width: clamp(280px, 30vw, 360px);
   max-width: 82vw;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--paper);
-  color: inherit;
-  text-decoration: none;
-}
-
-.storybook-home-recommendation-carousel .home-recommendation-card > img,
-.storybook-home-recommendation-carousel .home-recommendation-card-fallback {
-  width: 100%;
-  height: 180px;
-}
-
-.storybook-home-recommendation-carousel .home-recommendation-card > img {
-  display: block;
-  object-fit: cover;
-}
-
-.storybook-home-recommendation-carousel .home-recommendation-card-fallback {
-  display: grid;
-  place-items: center;
-  background: var(--soft);
-  color: var(--muted);
-  font: 700 0.72rem/1.3 "Noto Sans KR", Arial, sans-serif;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.storybook-home-recommendation-carousel .home-recommendation-card > div:last-child {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 22px 24px 24px;
-}
-
-.storybook-home-recommendation-carousel .home-recommendation-card .editorial-type-meta {
-  margin: 0 0 10px;
-}
-
-.storybook-home-recommendation-carousel .home-recommendation-card .editorial-title-3 {
-  display: -webkit-box;
-  margin: 0;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
-.storybook-home-recommendation-carousel .home-recommendation-card .editorial-type-body-sm {
-  display: -webkit-box;
-  margin-top: 12px;
-  overflow: hidden;
-  color: var(--muted);
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 }
 
 @media (max-width: 640px) {
@@ -119,7 +63,7 @@
     padding-top: 32px;
   }
 
-  .storybook-home-recommendation-carousel .home-recommendation-card {
+  .storybook-home-recommendation-carousel .home-recommendations-track > .editorial-collection-card {
     flex-basis: min(82vw, 340px);
     width: min(82vw, 340px);
   }

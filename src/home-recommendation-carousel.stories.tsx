@@ -9,7 +9,7 @@ const articles = [
 ] as const;
 
 const meta = {
-  title: "Site/HomeRecommendationCarousel",
+  title: "Patterns/Editorial Collection/Card Carousel",
   component: HomeRecommendationCarousel,
   parameters: { layout: "fullscreen" },
   decorators: [(Story) => <main className="storybook-home-recommendation-carousel"><Story /></main>],
