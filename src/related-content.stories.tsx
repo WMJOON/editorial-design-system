@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { RelatedContent } from "../../personal-site/cloudflare-pages/app/components/related-content";
+import "./related-content.story.css";
 
 const sourceArticle = {
   slug: "agentic-workflow-foundations",
@@ -26,7 +27,7 @@ const meta = {
   title: "Site/RelatedContent",
   component: RelatedContent,
   parameters: { layout: "fullscreen" },
-  decorators: [(Story) => <main style={{ padding: "48px 0" }}><Story /></main>],
+  decorators: [(Story) => <main className="storybook-related-content"><Story /></main>],
 } satisfies Meta<typeof RelatedContent>;
 
 export default meta;

@@ -1,0 +1,82 @@
+.storybook-related-content {
+  --ink: var(--editorial-fg);
+  --muted: var(--editorial-muted);
+  --line: var(--editorial-border);
+  --paper: var(--editorial-bg-surface);
+  --soft: var(--editorial-bg-subtle);
+  min-height: 100vh;
+  padding: 64px 24px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.storybook-related-content .related-content {
+  width: min(760px, 100%);
+  margin-inline: auto;
+  padding-top: 32px;
+  border-top: 2px solid var(--ink);
+}
+
+.storybook-related-content .related-content > .kicker {
+  margin: 0 0 8px;
+}
+
+.storybook-related-content .personalization-consent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+.storybook-related-content .personalization-consent p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.storybook-related-content .personalization-consent .editorial-button {
+  flex: none;
+}
+
+.storybook-related-content .related-content-list {
+  display: grid;
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.storybook-related-content .related-content-list a {
+  display: grid;
+  gap: 6px;
+  padding: 20px 4px;
+  border-bottom: 1px solid var(--line);
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.18s ease, padding 0.18s ease;
+}
+
+.storybook-related-content .related-content-list a:hover {
+  padding-left: 10px;
+  color: var(--editorial-link);
+}
+
+.storybook-related-content .related-content-list .recommendation-reason,
+.storybook-related-content .related-content-list small {
+  color: var(--muted);
+}
+
+.storybook-related-content .related-content-list strong {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .storybook-related-content {
+    padding: 40px 16px;
+  }
+
+  .storybook-related-content .personalization-consent {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
