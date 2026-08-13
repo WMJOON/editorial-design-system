@@ -41,33 +41,31 @@
 }
 
 .storybook-related-content .related-content-list {
-  display: grid;
   margin-top: 24px;
   border-top: 1px solid var(--line);
 }
 
-.storybook-related-content .related-content-list a {
-  display: grid;
-  gap: 6px;
-  padding: 20px 4px;
-  border-bottom: 1px solid var(--line);
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.18s ease, padding 0.18s ease;
+.storybook-related-content .related-content-list-entry .editorial-collection-list-item {
+  grid-template-columns: minmax(0, 1fr) 18px;
+  gap: 10px;
+  padding: 18px 4px;
 }
 
-.storybook-related-content .related-content-list a:hover {
-  padding-left: 10px;
-  color: var(--editorial-link);
+.storybook-related-content .related-content-list-entry .editorial-collection-list-item time {
+  display: none;
 }
 
-.storybook-related-content .related-content-list .recommendation-reason,
-.storybook-related-content .related-content-list small {
-  color: var(--muted);
+.storybook-related-content .related-content-list-entry .editorial-collection-list-item > div {
+  min-width: 0;
 }
 
-.storybook-related-content .related-content-list strong {
-  display: block;
+.storybook-related-content .related-content-list-entry .editorial-title-2 {
+  font-size: 1.18rem;
+}
+
+.storybook-related-content .related-content-list-entry .editorial-collection-excerpt {
+  margin-top: 6px;
+  font-size: 0.82rem;
 }
 
 @media (max-width: 640px) {

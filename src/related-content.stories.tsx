@@ -33,8 +33,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const TopicMatch: Story = { args: { sourceArticle, articles: topicArticles } };
-export const ExplicitEditorialLink: Story = {
+export const Default: Story = {
   args: {
     sourceArticle,
     articles: [{ ...topicArticles[0], recommendationReason: "related", recommendationRank: 1 }, ...topicArticles.slice(1)],
