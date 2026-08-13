@@ -37,33 +37,6 @@
   gap: 8px;
 }
 
-.storybook-home-recommendation-carousel .home-recommendations-controls button {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  padding: 0;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--ink);
-  cursor: pointer;
-}
-
-.storybook-home-recommendation-carousel .home-recommendations-controls button:hover {
-  background: var(--soft);
-}
-
-.storybook-home-recommendation-carousel .home-recommendations-controls svg {
-  width: 17px;
-  height: 17px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.8;
-}
-
 .storybook-home-recommendation-carousel .home-recommendations-track {
   display: flex;
   align-items: stretch;
