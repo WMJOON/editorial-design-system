@@ -55,6 +55,7 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 - `EditorialMarkdown`: GFM, literal single tildes, tables, KaTeX, and Mermaid.
 - `EditorialArticle`: page-title header and rendered body.
 - `EditorialArticleHeader`: metadata, page title, subtitle, and tags.
+- `EditorialSiteIntro`, `EditorialTopicBar`, `EditorialTopicIndex`, and `EditorialSiteFooter`: the shared fluid site shell for landing and index pages.
 - `EditorialCollection`: shared list/card content collection for feeds, archives, and topic pages.
 - `EditorialKanbanBoard` and `EditorialEditorShell`: presentational operations organisms; the backoffice app owns its drag, save, and filesystem API behavior.
 

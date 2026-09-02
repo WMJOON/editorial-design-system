@@ -1,9 +1,22 @@
 import type { ReactNode } from "react";
 import { EditorialMarkdown } from "./editorial-markdown.js";
+import { EditorialSocialLinks, type EditorialSocialLinkItem } from "./editorial-social-links.js";
+import { EditorialWordWrap } from "./editorial-word-wrap.js";
 
 export type EditorialLink = { href: string; label: string };
 
 export type EditorialNavProps = { brand: string; brandHref?: string; links?: EditorialLink[]; trailing?: ReactNode };
+
+export type EditorialSiteIntroLink = EditorialSocialLinkItem;
+
+export type EditorialSiteIntroProps = {
+  eyebrow?: ReactNode;
+  title: ReactNode;
+  lede?: ReactNode;
+  socialLinks?: EditorialSiteIntroLink[];
+  socialLabel?: string;
+  className?: string;
+};
 
 /**
  * The navigation molecule. Use EditorialSiteHeader for a complete page shell
@@ -27,6 +40,21 @@ export function EditorialSiteHeader({ className, ...nav }: EditorialNavProps & {
   </header>;
 }
 
+/**
+ * A resilient landing-page introduction. It owns its content boundary and
+ * Korean line-breaking rules so consumers do not need page-specific hero CSS.
+ */
+export function EditorialSiteIntro({ eyebrow, title, lede, socialLinks = [], socialLabel = "소셜 링크", className }: EditorialSiteIntroProps) {
+  return <header className={["editorial-site-intro", className].filter(Boolean).join(" ")}>
+    <div className="editorial-site-intro__inner">
+      {eyebrow && <p className="editorial-site-intro__eyebrow">{eyebrow}</p>}
+      <h1 className="editorial-display editorial-site-intro__title"><EditorialWordWrap>{title}</EditorialWordWrap></h1>
+      <EditorialSocialLinks links={socialLinks} label={socialLabel} />
+      {lede && <p className="editorial-site-intro__lede">{lede}</p>}
+    </div>
+  </header>;
+}
+
 export function EditorialTags({ tags, className, size = "md" }: { tags: string[]; className?: string; size?: EditorialMetadataSize }) {
   if (tags.length === 0) return null;
   return <div className={["editorial-tags", className].filter(Boolean).join(" ")} aria-label="태그">{tags.map((tag) => <EditorialTag key={tag} size={size}>{tag}</EditorialTag>)}</div>;
@@ -45,7 +73,7 @@ export function EditorialBadge({ children, size = "md" }: { children: ReactNode;
 export function EditorialArticleHeader({ category, date, title, subtitle, tags = [] }: { category: string; date: string; title: string; subtitle?: string; tags?: string[] }) {
   return <header className="editorial-article-header">
     <p className="editorial-kicker">{category} · {date}</p>
-    <h1 className="editorial-title-1">{title}</h1>
+    <h1 className="editorial-title-1"><EditorialWordWrap>{title}</EditorialWordWrap></h1>
     {subtitle && <p className="editorial-subtitle">{subtitle}</p>}
     <EditorialTags tags={tags} size="sm" />
   </header>;
