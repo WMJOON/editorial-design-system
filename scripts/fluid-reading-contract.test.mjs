@@ -5,7 +5,7 @@ import test from "node:test";
 const css = await readFile(new URL("../editorial.css", import.meta.url), "utf8");
 
 test("one bounded root drives body and title typography", () => {
-  assert.match(css, /--editorial-root-font-size:\s*clamp\(0\.9375rem,\s*0\.85rem \+ 0\.43vw,\s*1\.125rem\)/);
+  assert.match(css, /--editorial-root-font-size:\s*clamp\(0\.9375rem,\s*calc\(0\.85rem \+ 0\.43vw\),\s*1\.125rem\)/);
   assert.match(css, /html\s*\{\s*font-size:\s*var\(--editorial-root-font-size\);\s*\}/);
   assert.match(css, /--editorial-type-body-size:\s*1rem/);
   assert.match(css, /--editorial-type-title-1-size:\s*2\.5rem/);
