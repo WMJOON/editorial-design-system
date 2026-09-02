@@ -43,6 +43,8 @@ test("responsive collection safeguards survive the fluid typography release", as
   assert.match(css, /@media \(max-width:720px\) \{[\s\S]*?\.editorial-collection-list-item \{ grid-template-columns:minmax\(0,1fr\) 18px;/);
   assert.match(css, /\.editorial-collection-list-item \.editorial-word \{ white-space:normal; overflow-wrap:anywhere;/);
   assert.match(css, /\.editorial-collection-card \{ display:grid; grid-template-columns:minmax\(0,1fr\)/);
+  assert.doesNotMatch(css, /\.editorial-collection-card \.editorial-collection-card-body \{[^}]*min-height:205px/);
+  assert.match(css, /@media \(min-width:721px\) \{ \.editorial-collection-card--with-excerpt \.editorial-collection-card-body \{ min-height:205px;/);
 });
 
 test("Mermaid keeps the released mobile scroll contract", async () => {
