@@ -5,7 +5,7 @@ import test from "node:test";
 const css = await readFile(new URL("../editorial.css", import.meta.url), "utf8");
 
 test("body and title typography use bounded fluid tokens", () => {
-  assert.match(css, /--editorial-type-body-size:\s*clamp\(1\.0625rem,\s*0\.95rem \+ 0\.5vw,\s*1\.25rem\)/);
+  assert.match(css, /--editorial-type-body-size:\s*clamp\(0\.9375rem,\s*0\.85rem \+ 0\.43vw,\s*1\.125rem\)/);
   assert.match(css, /--editorial-type-title-1-size:\s*clamp\(1\.75rem,\s*1\.25rem \+ 2\.75vw,\s*3rem\)/);
   assert.match(css, /\.editorial-content\s*\{[^}]*var\(--editorial-type-body-size\)\/var\(--editorial-type-body-line-height\)/s);
   assert.doesNotMatch(css, /\.editorial-content\s*\{[^}]*font:\s*16px/s);

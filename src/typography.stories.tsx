@@ -9,7 +9,7 @@ const rows = [
   ["Heading / H4", "editorial-title-4", <h4 className="editorial-title-4">검증 가능한 출처와 조건</h4>],
   ["Heading / H5", "editorial-title-5", <h5 className="editorial-title-5">문맥을 잃지 않는 설명</h5>],
   ["Label / H6", "editorial-title-6", <h6 className="editorial-title-6">Supporting context</h6>],
-  ["Body", "17–20px / 1.6 fluid", <p className="editorial-type-body">독자마다 필요한 순서와 예시는 다를 수 있다. 하지만 어떤 독자에게 보여도 바뀌면 안 되는 사실과 조건은 먼저 고정한다.</p>],
+  ["Body", "15–18px / 1.6 fluid", <p className="editorial-type-body">독자마다 필요한 순서와 예시는 다를 수 있다. 하지만 어떤 독자에게 보여도 바뀌면 안 되는 사실과 조건은 먼저 고정한다.</p>],
   ["Code", "ui-monospace / 0.85rem", <pre className="type-specimen-code">claim: "AI 인용은 추천을 보장하지 않는다."\nstatus: verified</pre>],
 ] as const;
 
@@ -25,11 +25,11 @@ export const FluidReadingArticle: Story = {
     category="Reading foundation"
     date="2026-09-02"
     title="화면은 넓어져도 읽기의 호흡은 무너지지 않아야 한다"
-    subtitle="본문은 17px에서 시작해 20px에서 멈추고, 읽기 폭은 720px에 고정됩니다."
+    subtitle="본문은 15px에서 시작해 18px에서 멈추고, 읽기 폭은 720px에 고정됩니다."
     tags={["fluid typography", "reading measure"]}
     content={`## 크기는 부드럽게, 폭은 단단하게
 
-모바일에서는 한 손에 들어오는 화면을 충분히 사용하고, 화면이 넓어질수록 글자와 여백을 아주 조금씩 키웁니다. 본문은 20px에 도달하면 더 이상 커지지 않습니다.
+모바일에서는 한 손에 들어오는 화면을 충분히 사용하고, 화면이 넓어질수록 글자와 여백을 아주 조금씩 키웁니다. 본문은 18px에 도달하면 더 이상 커지지 않습니다.
 
 데스크톱에서도 글줄은 720px을 넘지 않습니다. 이렇게 하면 한 줄이 지나치게 길어지지 않고 다음 줄의 시작점을 안정적으로 찾을 수 있습니다.
 
