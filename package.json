@@ -1,6 +1,6 @@
 {
   "name": "@wmjoon/editorial-design-system",
-  "version": "0.1.49",
+  "version": "0.1.59",
   "description": "Shared editorial tokens and Markdown renderer for WMJOON properties.",
   "license": "MIT",
   "private": false,
@@ -23,6 +23,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "test": "node --test scripts/*.test.mjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepublishOnly": "npm run build"
