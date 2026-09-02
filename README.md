@@ -8,7 +8,7 @@ It is designed to keep a public reading experience and a local publishing consol
 
 - Semantic light/dark color tokens, including warm operations surfaces
 - Clear title roles: display plus a complete document hierarchy from `h1` through `h6`
-- Korean-first typography with Noto Sans KR and Noto Serif KR
+- Korean-first fluid typography with Noto Sans KR and Noto Serif KR
 - Markdown support for GFM tables, KaTeX, Mermaid, and literal single tildes
 - Atomic Design taxonomy: foundations, atoms, molecules, organisms, and app patterns
 
@@ -58,7 +58,18 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 - `EditorialCollection`: shared list/card content collection for feeds, archives, and topic pages.
 - `EditorialKanbanBoard` and `EditorialEditorShell`: presentational operations organisms; the backoffice app owns its drag, save, and filesystem API behavior.
 
-`EditorialMarkdown` standardizes typography, dark mode, and a 760px reading measure. The components are intentionally editorial primitives; product-specific dashboard UI remains in each consuming app.
+`EditorialMarkdown` standardizes typography, dark mode, and a fixed 720px reading measure. The components are intentionally editorial primitives; product-specific dashboard UI remains in each consuming app.
+
+## Fluid reading tokens
+
+Long-form reading uses fluid type and rhythm without media-query jumps. The body starts at 17px, follows a restrained viewport slope, and locks at 20px. Page titles move from 28px to 48px and reach their maximum around the 1024px desktop boundary. The line height remains unitless so it follows the computed font size.
+
+- Body: `--editorial-type-body-size`, `--editorial-type-body-line-height`
+- Titles: `--editorial-type-title-1-size` through `--editorial-type-title-3-size`
+- Reading width: `--editorial-reading-measure` (`45rem`, normally 720px)
+- Fluid rhythm: `--editorial-space-inline-gutter`, `--editorial-space-content-block`, `--editorial-space-section`, `--editorial-space-card-gap`
+
+Consumers may override these semantic tokens at a theme or product boundary. Keep `--editorial-reading-measure`, `--editorial-border-width`, and `--editorial-size-control-*` fixed: line length, hairline borders, and touch targets are constraints rather than fluid decoration.
 
 ### Composition contract
 

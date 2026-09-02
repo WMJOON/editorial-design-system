@@ -4,3 +4,4 @@
 .storybook-canvas :is(.editorial-display,.editorial-title-1,.editorial-title-2,.editorial-title-3,.editorial-title-4,.editorial-title-5,.editorial-title-6) { color: var(--editorial-fg); }
 .storybook-canvas * { box-sizing: border-box; }
 .storybook-canvas a { color: inherit; }
+.storybook-canvas:has(.fluid-reading-story) { padding: 0; }

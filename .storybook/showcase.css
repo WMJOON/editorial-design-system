@@ -2,6 +2,7 @@
 .type-specimen-intro { max-width: 640px; margin: 0 0 28px; color: var(--editorial-fg-muted); font: 1rem/1.7 "Noto Sans KR", Arial, sans-serif; }
 .type-specimen-row { display: grid; grid-template-columns: 138px minmax(0, 1fr); gap: 22px; align-items: start; padding: 24px 0; border-top: 1px solid var(--editorial-border); }
 .type-specimen-label { padding-top: 5px; color: var(--editorial-fg-muted); font: .72rem/1.3 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; }
-.type-specimen-copy { margin: 0; color: var(--editorial-fg); font: 1rem/1.7 "Noto Sans KR", Arial, sans-serif; }
+.type-specimen-copy { margin: 0; color: var(--editorial-fg); font: var(--editorial-type-body-size)/var(--editorial-type-body-line-height) "Noto Sans KR", Arial, sans-serif; }
 .type-specimen-code { margin: 0; padding: 18px; border-radius: 10px; background: var(--editorial-code-bg); color: var(--editorial-code-fg); font: .85rem/1.65 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre-wrap; }
+.fluid-reading-story { min-height: 100vh; padding-block: var(--editorial-space-section); background: var(--editorial-bg-canvas); }
 @media (max-width:720px) { .type-specimen-row { grid-template-columns: 1fr; gap: 9px; } }
