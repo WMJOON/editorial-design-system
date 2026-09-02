@@ -14,7 +14,7 @@ export function EditorialCollection({ items, heading, countLabel, className, def
   const classes = ["editorial-collection", className].filter(Boolean).join(" ");
   return <section className={classes} aria-label={heading ?? "콘텐츠 목록"}>
     <EditorialCollectionHeader heading={heading} countLabel={countLabel} view={view} onViewChange={setView} />
-    {view === "list" ? <EditorialCollectionList items={items} showExcerpt={showExcerpt} /> : <EditorialCollectionCardGrid items={items} />}
+    {view === "list" ? <EditorialCollectionList items={items} showExcerpt={showExcerpt} /> : <EditorialCollectionCardGrid items={items} showExcerpt={showExcerpt} />}
     {loadMoreHref && <EditorialTextLink className="editorial-collection-more" href={loadMoreHref} analyticsName={loadMoreLabel} analyticsLocation="collection_footer">{loadMoreLabel}</EditorialTextLink>}
   </section>;
 }

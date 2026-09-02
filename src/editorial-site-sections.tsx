@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { EditorialWordWrap } from "./editorial-word-wrap.js";
 
 export type EditorialTopicLink = {
@@ -22,8 +23,9 @@ export function EditorialTopicBar({ topics, label = "Browse topics", id, classNa
 }
 
 export function EditorialTopicIndex({ topics, heading = "Explore", className }: { topics: EditorialTopicIndexItem[]; heading?: string; className?: string }) {
-  return <section className={["editorial-topic-index", className].filter(Boolean).join(" ")} aria-labelledby="editorial-topic-index-heading">
-    <p className="editorial-kicker" id="editorial-topic-index-heading">{heading}</p>
+  const headingId = useId();
+  return <section className={["editorial-topic-index", className].filter(Boolean).join(" ")} aria-labelledby={headingId}>
+    <p className="editorial-kicker" id={headingId}>{heading}</p>
     <div className="editorial-topic-index__list">{topics.map((topic) => <a href={topic.href} key={`${topic.href}-${topic.label}`} data-analytics-event="select_content" data-analytics-content-type="topic" data-analytics-content-id={topic.href} data-analytics-content-name={topic.label} data-analytics-link-location="topic_index">
       <span className="editorial-title-2"><EditorialWordWrap>{topic.label}</EditorialWordWrap></span>
       <small>{topic.description}</small>
@@ -33,8 +35,9 @@ export function EditorialTopicIndex({ topics, heading = "Explore", className }: 
 }
 
 export function EditorialProjectLinks({ projects, heading = "Selected systems", className }: { projects: EditorialProjectLink[]; heading?: string; className?: string }) {
-  return <section className={["editorial-project-links", className].filter(Boolean).join(" ")} aria-labelledby="editorial-project-links-heading">
-    <p className="editorial-kicker" id="editorial-project-links-heading">{heading}</p>
+  const headingId = useId();
+  return <section className={["editorial-project-links", className].filter(Boolean).join(" ")} aria-labelledby={headingId}>
+    <p className="editorial-kicker" id={headingId}>{heading}</p>
     <div>{projects.map((project) => <a href={project.href} key={`${project.href}-${project.title}`} data-analytics-event="select_content" data-analytics-content-type="project" data-analytics-content-id={project.href} data-analytics-content-name={project.title} data-analytics-link-location="project_links"><span className="editorial-project-links__title"><EditorialWordWrap>{project.title}</EditorialWordWrap></span><span className="editorial-project-links__arrow" aria-hidden="true">↗</span></a>)}</div>
   </section>;
 }

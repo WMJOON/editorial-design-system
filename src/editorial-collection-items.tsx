@@ -22,6 +22,6 @@ export function EditorialCollectionCard({ id, href, title, category, date, excer
 }
 
 /** Molecule: responsive visual-card grid for editorial collections. */
-export function EditorialCollectionCardGrid({ items }: { items: EditorialCollectionItem[] }) {
-  return <div className="editorial-collection-grid">{items.map(({ id, ...item }) => <EditorialCollectionCard {...item} id={id} key={id} />)}</div>;
+export function EditorialCollectionCardGrid({ items, showExcerpt = true }: { items: EditorialCollectionItem[]; showExcerpt?: boolean }) {
+  return <div className="editorial-collection-grid">{items.map(({ id, ...item }) => <EditorialCollectionCard {...item} id={id} key={id} showExcerpt={showExcerpt} />)}</div>;
 }

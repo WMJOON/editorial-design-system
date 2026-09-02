@@ -79,9 +79,10 @@ export function EditorialArticleHeader({ category, date, title, subtitle, tags =
   </header>;
 }
 
-export function EditorialArticle({ category, date, title, subtitle, tags = [], content }: { category: string; date: string; title: string; subtitle?: string; tags?: string[]; content: string }) {
+export function EditorialArticle({ category, date, title, subtitle, tags = [], content, cover }: { category: string; date: string; title: string; subtitle?: string; tags?: string[]; content: string; cover?: string }) {
   return <article className="editorial-article">
     <EditorialArticleHeader category={category} date={date} title={title} subtitle={subtitle} tags={tags} />
+    {cover && <div className="editorial-article-cover"><img src={cover} alt="" /></div>}
     <EditorialMarkdown content={content} />
   </article>;
 }
