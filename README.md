@@ -63,14 +63,16 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 
 ## Fluid reading tokens
 
-Long-form reading uses fluid type and rhythm without media-query jumps. The body starts at 15px, follows a restrained viewport slope, and locks at 18px. Page titles move from 28px to 48px and reach their maximum around the 1024px desktop boundary. The line height remains unitless so it follows the computed font size.
+The document root defines one fluid `rem`: it starts at 15px, follows a restrained viewport slope, and locks at 18px. Body text is `1rem`; headings, rhythm, and scalable card geometry use proportional `rem` values so the interface grows as one system instead of mixing a fluid body with a fixed 16px root. Line heights remain unitless so they follow the computed size.
 
-- Body: `--editorial-type-body-size`, `--editorial-type-body-line-height`
+- Root: `--editorial-root-font-size` (`15px–18px`)
+- Body: `--editorial-type-body-size` (`1rem`), `--editorial-type-body-line-height`
 - Titles: `--editorial-type-title-1-size` through `--editorial-type-title-3-size`
-- Reading width: `--editorial-reading-measure` (`45rem`, normally 720px)
-- Fluid rhythm: `--editorial-space-inline-gutter`, `--editorial-space-content-block`, `--editorial-space-section`, `--editorial-space-card-gap`
+- Reading width: `--editorial-reading-measure` (`720px`, fixed)
+- Root-relative rhythm: `--editorial-space-inline-gutter`, `--editorial-space-content-block`, `--editorial-space-section`, `--editorial-space-card-gap`
+- Thumbnail frame: `--editorial-thumbnail-ratio` (`16 / 9` for cards and article covers)
 
-Consumers may override these semantic tokens at a theme or product boundary. Keep `--editorial-reading-measure`, `--editorial-border-width`, and `--editorial-size-control-*` fixed: line length, hairline borders, and touch targets are constraints rather than fluid decoration.
+Consumers may override these semantic tokens at a theme or product boundary. Keep `--editorial-reading-measure`, `--editorial-mermaid-min-inline-size`, `--editorial-border-width`, and `--editorial-size-control-*` fixed: line length, readable diagram width, hairline borders, and touch targets are constraints rather than fluid decoration.
 
 ### Composition contract
 
