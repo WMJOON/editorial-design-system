@@ -38,7 +38,7 @@
   --editorial-mermaid-min-inline-size: 40rem;
 
   /* Fluid reading foundations. Type and rhythm scale until the desktop lock. */
-  --editorial-type-body-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.25rem);
+  --editorial-type-body-size: clamp(0.9375rem, 0.85rem + 0.43vw, 1.125rem);
   --editorial-type-body-line-height: 1.6;
   --editorial-type-title-1-size: clamp(1.75rem, 1.25rem + 2.75vw, 3rem);
   --editorial-type-title-2-size: clamp(1.5rem, 1.15rem + 1.6vw, 2.25rem);

@@ -63,7 +63,7 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 
 ## Fluid reading tokens
 
-Long-form reading uses fluid type and rhythm without media-query jumps. The body starts at 17px, follows a restrained viewport slope, and locks at 20px. Page titles move from 28px to 48px and reach their maximum around the 1024px desktop boundary. The line height remains unitless so it follows the computed font size.
+Long-form reading uses fluid type and rhythm without media-query jumps. The body starts at 15px, follows a restrained viewport slope, and locks at 18px. Page titles move from 28px to 48px and reach their maximum around the 1024px desktop boundary. The line height remains unitless so it follows the computed font size.
 
 - Body: `--editorial-type-body-size`, `--editorial-type-body-line-height`
 - Titles: `--editorial-type-title-1-size` through `--editorial-type-title-3-size`
