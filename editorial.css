@@ -34,6 +34,8 @@
   --editorial-mermaid-line: #665f56;
   --editorial-mermaid-secondary-bg: #f3f1ed;
   --editorial-mermaid-tertiary-bg: #f9e8d9;
+  --editorial-mermaid-frame-ratio: 16 / 9;
+  --editorial-mermaid-min-inline-size: 40rem;
 
   /* Legacy aliases retained for existing editorial components. */
   --editorial-ink: var(--editorial-fg);
@@ -76,6 +78,8 @@
   --editorial-mermaid-line: #d5c5b4;
   --editorial-mermaid-secondary-bg: #22201e;
   --editorial-mermaid-tertiary-bg: #3a281b;
+  --editorial-mermaid-frame-ratio: 16 / 9;
+  --editorial-mermaid-min-inline-size: 40rem;
 }
 
 :root[data-editorial-theme="light"], [data-editorial-theme="light"] {
@@ -213,8 +217,8 @@
 .editorial-content .hljs-keyword,.editorial-content .hljs-selector-tag,.editorial-content .hljs-meta,.editorial-content .hljs-type { color: var(--editorial-code-keyword); }
 .editorial-content .hljs-title,.editorial-content .hljs-title.function_,.editorial-content .hljs-function .hljs-title { color: var(--editorial-code-title); }
 .editorial-content .hljs-built_in,.editorial-content .hljs-variable,.editorial-content .hljs-selector-class { color: var(--editorial-code-built-in); }
-.editorial-mermaid-diagram { overflow: auto; margin: 34px 0; padding: 22px; border: 1px solid var(--editorial-line); background: var(--editorial-paper); }
-.editorial-mermaid-diagram svg { display: block; min-width: 560px; max-width: none; margin: auto; }
+.editorial-mermaid-diagram { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; margin: 34px 0; padding: 22px; border: 1px solid var(--editorial-line); background: var(--editorial-paper); }
+.editorial-mermaid-diagram svg { display: block; width: max(100%,var(--editorial-mermaid-min-inline-size)); min-width: var(--editorial-mermaid-min-inline-size); max-width: none; height: auto; aspect-ratio: var(--editorial-mermaid-frame-ratio); margin: auto; }
 .editorial-mermaid-diagram .label, .editorial-mermaid-diagram .nodeLabel, .editorial-mermaid-diagram .edgeLabel { color: var(--editorial-mermaid-node-fg); }
 .editorial-mermaid-error { margin: 28px 0; padding: 14px; border: 1px solid var(--editorial-line); color: var(--editorial-muted); }
 .editorial-mermaid-error summary { cursor: pointer; font-weight: 600; }
