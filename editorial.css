@@ -193,6 +193,7 @@ html { font-size: var(--editorial-root-font-size); }
 [data-editorial-control="button"] { touch-action:manipulation; }
 @media (pointer:coarse) {
   button[data-editorial-control="button"], .editorial-segmented-control .editorial-segmented-option, .editorial-collection-toggle button { min-width:44px; min-height:44px; }
+  button[data-editorial-control].editorial-button--lg, button[data-editorial-control].editorial-icon-button--lg { min-height:max(44px,var(--editorial-size-control-lg)); }
   .editorial-nav a, .editorial-text-link { min-height:44px; display:inline-flex; align-items:center; }
 }
 .editorial-icon-button { width:var(--editorial-size-control-md); padding:0; }
