@@ -39,7 +39,7 @@
   --editorial-thumbnail-ratio: 16 / 9;
 
   /* One fluid root drives proportional type, spacing, and card geometry. */
-  --editorial-root-font-size: clamp(0.9375rem, 0.85rem + 0.43vw, 1.125rem);
+  --editorial-root-font-size: clamp(0.9375rem, calc(0.85rem + 0.43vw), 1.125rem);
   --editorial-type-body-size: 1rem;
   --editorial-type-body-line-height: 1.6;
   --editorial-type-title-1-size: 2.5rem;
@@ -190,6 +190,12 @@ html { font-size: var(--editorial-root-font-size); }
 /* Atoms: explicit actions. Keep the interactive target at least 44px high. */
 .editorial-button,.editorial-icon-button { display:inline-flex; align-items:center; justify-content:center; min-height:var(--editorial-size-control-md); border:var(--editorial-border-width) solid var(--editorial-border); background:var(--editorial-bg-surface); color:var(--editorial-fg); font:600 .82rem/1.2 "Noto Sans KR",Arial,sans-serif; cursor:pointer; transition:background .16s ease,border-color .16s ease,color .16s ease; }
 .editorial-button { gap:.5rem; padding:.625rem .875rem; }
+[data-editorial-control="button"] { touch-action:manipulation; }
+@media (pointer:coarse) {
+  button[data-editorial-control="button"], .editorial-segmented-control .editorial-segmented-option, .editorial-collection-toggle button { min-width:44px; min-height:44px; }
+  button[data-editorial-control].editorial-button--lg, button[data-editorial-control].editorial-icon-button--lg { min-height:max(44px,var(--editorial-size-control-lg)); }
+  .editorial-nav a, .editorial-text-link { min-height:44px; display:inline-flex; align-items:center; }
+}
 .editorial-icon-button { width:var(--editorial-size-control-md); padding:0; }
 .editorial-button--sm { min-height:var(--editorial-size-control-md); padding-inline:.6875rem; font-size:.76rem; }.editorial-button--lg { min-height:var(--editorial-size-control-lg); padding-inline:1.125rem; font-size:.9rem; }.editorial-icon-button--sm { width:var(--editorial-size-control-md); min-height:var(--editorial-size-control-md); }.editorial-icon-button--lg { width:var(--editorial-size-control-lg); min-height:var(--editorial-size-control-lg); }
 .editorial-icon-button svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.7; }

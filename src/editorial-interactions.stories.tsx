@@ -1,0 +1,21 @@
+import { useState } from "react";
+import { EditorialButton, EditorialIconButton } from "./editorial-actions.js";
+import { EditorialTabs } from "./editorial-tabs.js";
+import { EditorialSegmentedControl } from "./editorial-controls.js";
+export default { title: "Interaction/Contract" };
+export function TouchKeyboardAndForms() {
+  const [count, setCount] = useState(0);
+  const [tab, setTab] = useState("a");
+  const [submitted, setSubmitted] = useState(0);
+  return <><output data-testid="count">{count}</output>
+    <EditorialButton onClick={() => setCount(n => n + 1)}>Increment</EditorialButton>
+    <EditorialButton disabled onClick={() => setCount(n => n + 100)}>Disabled</EditorialButton>
+    <EditorialButton onTouchEnd={e => e.preventDefault()} onClick={() => setCount(n => n + 100)}>Cancelled by caller</EditorialButton>
+    <EditorialIconButton label="Icon increment" onClick={() => setCount(n => n + 1)}>+</EditorialIconButton>
+    <EditorialSegmentedControl label="Choice" options={[{value:"a",label:"A"},{value:"b",label:"B"}]} value={tab} onChange={setTab}/>
+    <EditorialTabs label="Tabs" value={tab} onChange={setTab} options={[{value:"a",label:"First",id:"tab-a",panelId:"panel"},{value:"x",label:"Disabled tab",id:"tab-x",panelId:"panel",disabled:true},{value:"b",label:"Last",id:"tab-b",panelId:"panel"}]}/>
+    <div id="panel" role="tabpanel">{tab}</div>
+    <form onSubmit={e => { e.preventDefault(); setSubmitted(n => n + 1); }}><EditorialButton type="submit">Submit</EditorialButton></form>
+    <output data-testid="submitted">{submitted}</output>
+  </>;
+}
