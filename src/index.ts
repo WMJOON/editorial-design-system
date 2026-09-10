@@ -1,4 +1,6 @@
 export { EditorialMarkdown } from "./editorial-markdown.js";
+export { EditorialTabs } from "./editorial-tabs.js";
+export type { EditorialTabsProps } from "./editorial-tabs.js";
 export { EditorialButton, EditorialIconButton } from "./editorial-actions.js";
 export type { EditorialButtonProps, EditorialButtonVariant, EditorialControlSize, EditorialIconButtonProps } from "./editorial-actions.js";
 export { EditorialCheckbox, EditorialInput, EditorialSegmentedControl, EditorialSelect, EditorialTextArea } from "./editorial-controls.js";
