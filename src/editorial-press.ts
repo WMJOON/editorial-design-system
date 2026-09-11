@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, type ButtonHTMLAttributes, type MouseEventHandler } from "react";
+import { useEffect, useRef, type ButtonHTMLAttributes, type MouseEventHandler } from "react";
+import { subscribeEditorialPageReset } from "./editorial-page-lifecycle.js";
 
 /**
  * Touch fallback scoped to one button. Native click retains form behavior,
@@ -9,6 +10,10 @@ import { useRef, type ButtonHTMLAttributes, type MouseEventHandler } from "react
 export function useEditorialPress(onPress?: MouseEventHandler<HTMLButtonElement>, props: ButtonHTMLAttributes<HTMLButtonElement> = {}) {
   const gesture = useRef<{ id: number; x: number; y: number; cancelled: boolean } | null>(null);
   const compatibilityClick = useRef(false);
+  useEffect(() => subscribeEditorialPageReset(() => {
+    gesture.current = null;
+    compatibilityClick.current = false;
+  }), []);
   return {
     onTouchStart(event: React.TouchEvent<HTMLButtonElement>) {
       props.onTouchStart?.(event);
@@ -40,6 +45,11 @@ export function useEditorialPress(onPress?: MouseEventHandler<HTMLButtonElement>
     onPointerDown(event: React.PointerEvent<HTMLButtonElement>) {
       if (event.pointerType !== "touch") compatibilityClick.current = false;
       props.onPointerDown?.(event);
+    },
+    onPointerCancel(event: React.PointerEvent<HTMLButtonElement>) {
+      gesture.current = null;
+      compatibilityClick.current = false;
+      props.onPointerCancel?.(event);
     },
     onClick(event: React.MouseEvent<HTMLButtonElement>) {
       if (props.disabled || event.currentTarget.disabled) return;

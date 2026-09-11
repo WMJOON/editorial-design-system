@@ -1,0 +1,28 @@
+# Install as .github/workflows/interaction-check.yml after workflow-scope approval.
+name: Check interaction contract
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  interaction-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build-storybook
+      - run: npx playwright install --with-deps webkit
+      - name: Test built Storybook in mobile WebKit
+        run: |
+          python3 -m http.server 6011 --bind 127.0.0.1 --directory storybook-static &
+          test_server_pid=$!
+          trap 'kill "$test_server_pid"' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:6011/index.json > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run test:interactions
