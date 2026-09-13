@@ -11,20 +11,18 @@ await increment.tap();assert.equal(await count(),'1');
 await increment.tap();await increment.tap();assert.equal(await count(),'3','rapid distinct taps');
 await increment.focus();await increment.press('Enter');await increment.press('Space');assert.equal(await count(),'5');
 async function gesture(locator,kind){await locator.evaluate((button,kind)=>{
- const touch={identifier:1,clientX:10,clientY:10};
- const send=(type,touches,changedTouches=[touch])=>{const e=new Event(type,{bubbles:true,cancelable:true});Object.defineProperties(e,{touches:{value:touches},changedTouches:{value:changedTouches}});button.dispatchEvent(e);};
- send('touchstart',[touch]);
- if(kind==='move')send('touchmove',[{...touch,clientY:50}]);
- if(kind==='cancel')send('touchcancel',[]);
- if(kind==='multi')send('touchstart',[touch,{...touch,identifier:2}]);
- if(kind==='pointer-cancel')button.dispatchEvent(new Event('pointercancel',{bubbles:true}));
+ const send=(type,init={})=>button.dispatchEvent(new PointerEvent(type,{bubbles:true,cancelable:true,pointerId:1,pointerType:'touch',isPrimary:true,clientX:10,clientY:10,...init}));
+ send('pointerdown');
+ if(kind==='move')send('pointermove',{clientY:50});
+ if(kind==='cancel')send('pointercancel');
+ if(kind==='multi')send('pointerdown',{pointerId:2,isPrimary:false});
  if(kind==='restore')window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true}));
- send('touchend',[]);
+ send('pointerup');
 },kind);}
-for(const kind of ['move','cancel','multi','pointer-cancel','restore']){await gesture(increment,kind);assert.equal(await count(),'5',kind+' must not activate');}
+for(const kind of ['move','cancel','multi','restore']){await gesture(increment,kind);assert.equal(await count(),'5',kind+' must not activate');}
 await gesture(page.getByRole('button',{name:'Disabled',exact:true}),'tap');assert.equal(await count(),'5');
 await gesture(page.getByRole('button',{name:'Cancelled by caller'}),'tap');assert.equal(await count(),'5');
-await gesture(increment,'tap');assert.equal(await count(),'6','touch-only fallback');
+await gesture(increment,'tap');assert.equal(await count(),'6','pointer-only fallback');
 await page.getByRole('button',{name:'Icon increment'}).tap();assert.equal(await count(),'7');
 await page.getByRole('button',{name:'Submit',exact:true}).tap();assert.equal(await page.getByTestId('submitted').textContent(),'1');
 await page.getByRole('tab',{name:'First',exact:true}).tap();await page.getByRole('tab',{name:'First',exact:true}).press('ArrowRight');assert.equal(await page.getByRole('tab',{name:'Last',exact:true}).getAttribute('aria-selected'),'true');

@@ -4,8 +4,9 @@ import { useEffect, useRef, type ButtonHTMLAttributes, type MouseEventHandler } 
 import { subscribeEditorialPageReset } from "./editorial-page-lifecycle.js";
 
 /**
- * Touch fallback scoped to one button. Native click retains form behavior,
- * caller cancellation and keyboard semantics. A new gesture resets deduplication.
+ * Pointer fallback scoped to one button. iOS Safari exposes pointer events more
+ * consistently than React's delegated touchend path. Native click remains the
+ * action interface so form, caller cancellation and keyboard semantics survive.
  */
 export function useEditorialPress(onPress?: MouseEventHandler<HTMLButtonElement>, props: ButtonHTMLAttributes<HTMLButtonElement> = {}) {
   const gesture = useRef<{ id: number; x: number; y: number; cancelled: boolean } | null>(null);
@@ -15,41 +16,38 @@ export function useEditorialPress(onPress?: MouseEventHandler<HTMLButtonElement>
     compatibilityClick.current = false;
   }), []);
   return {
-    onTouchStart(event: React.TouchEvent<HTMLButtonElement>) {
-      props.onTouchStart?.(event);
-      compatibilityClick.current = false;
-      const touch = event.touches[0];
-      gesture.current = !props.disabled && !event.defaultPrevented && event.touches.length === 1
-        ? { id: touch.identifier, x: touch.clientX, y: touch.clientY, cancelled: false } : null;
-    },
-    onTouchMove(event: React.TouchEvent<HTMLButtonElement>) {
-      props.onTouchMove?.(event);
-      const start = gesture.current;
-      const touch = event.touches[0];
-      if (start && (event.defaultPrevented || event.touches.length !== 1 || !touch || touch.identifier !== start.id || Math.hypot(touch.clientX - start.x, touch.clientY - start.y) > 10)) start.cancelled = true;
-    },
-    onTouchCancel(event: React.TouchEvent<HTMLButtonElement>) {
-      gesture.current = null;
-      props.onTouchCancel?.(event);
-    },
-    onTouchEnd(event: React.TouchEvent<HTMLButtonElement>) {
-      props.onTouchEnd?.(event);
-      const start = gesture.current;
-      gesture.current = null;
-      const touch = event.changedTouches[0];
-      if (props.disabled || event.currentTarget.disabled || event.defaultPrevented || !event.cancelable || !start || start.cancelled || event.touches.length || !touch || touch.identifier !== start.id || Math.hypot(touch.clientX - start.x, touch.clientY - start.y) > 10) return;
-      event.preventDefault();
-      compatibilityClick.current = true;
-      event.currentTarget.click();
-    },
     onPointerDown(event: React.PointerEvent<HTMLButtonElement>) {
-      if (event.pointerType !== "touch") compatibilityClick.current = false;
+      compatibilityClick.current = false;
       props.onPointerDown?.(event);
+      if (event.pointerType !== "touch" || !event.isPrimary || props.disabled || event.currentTarget.disabled || event.defaultPrevented) {
+        gesture.current = null;
+        return;
+      }
+      // Cancelling pointerdown suppresses the later compatibility mouse event.
+      // Touch-action still owns native pan/zoom, so a move can cancel activation
+      // without leaving a delayed click to hit reflowed content underneath.
+      event.preventDefault();
+      gesture.current = { id: event.pointerId, x: event.clientX, y: event.clientY, cancelled: false };
+    },
+    onPointerMove(event: React.PointerEvent<HTMLButtonElement>) {
+      const start = gesture.current;
+      if (start && (event.pointerId !== start.id || !event.isPrimary || Math.hypot(event.clientX - start.x, event.clientY - start.y) > 10)) start.cancelled = true;
+      props.onPointerMove?.(event);
+      if (event.defaultPrevented && start) start.cancelled = true;
     },
     onPointerCancel(event: React.PointerEvent<HTMLButtonElement>) {
       gesture.current = null;
       compatibilityClick.current = false;
       props.onPointerCancel?.(event);
+    },
+    onPointerUp(event: React.PointerEvent<HTMLButtonElement>) {
+      props.onPointerUp?.(event);
+      const start = gesture.current;
+      gesture.current = null;
+      if (props.disabled || event.currentTarget.disabled || event.defaultPrevented || event.pointerType !== "touch" || !event.isPrimary || !start || start.cancelled || event.pointerId !== start.id || Math.hypot(event.clientX - start.x, event.clientY - start.y) > 10) return;
+      event.preventDefault();
+      compatibilityClick.current = true;
+      event.currentTarget.click();
     },
     onClick(event: React.MouseEvent<HTMLButtonElement>) {
       if (props.disabled || event.currentTarget.disabled) return;

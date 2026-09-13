@@ -1,8 +1,8 @@
-# Interaction contract (0.1.65)
+# Interaction contract (0.1.66)
 
 `EditorialButton` and `EditorialIconButton` share the same press handling as segmented controls and collection toggles. `EditorialTabs` adds controlled selection, disabled options and roving keyboard focus. Use its option `id`/`panelId` with an application-owned labelled tabpanel.
 
-Native button click remains the action interface, including form submission and caller `preventDefault`. A completed single-finger tap calls the button's native `click()` within touchend, after cancelling the compatibility click. It does not claim the resulting click is trusted. Moving more than 10 CSS pixels, multi-touch and cancelled gestures do not activate the fallback. There is no time-based lockout between distinct taps. Keyboard and pen/mouse keep their native click path. `disabled` is checked at activation time.
+Native button click remains the action interface, including form submission and caller `preventDefault`. A primary touch pointer cancels its compatibility mouse event on `pointerdown`; a completed gesture calls the button's native `click()` within `pointerup`. Cancelling the compatibility event before a button mutates layout prevents a delayed ghost click from landing on newly reflowed content. `touch-action: manipulation` continues to own native pan and zoom, while pointer movement cancels activation. This avoids React's delegated `touchend` path, which can be passive or omitted during Safari gesture arbitration. It does not claim the resulting click is trusted. Moving more than 10 CSS pixels, secondary pointers and cancelled gestures do not activate the fallback. There is no time-based lockout between distinct taps. Keyboard, pen and mouse keep their native click path. `disabled` is checked at activation time.
 
 Use `unstyled` on EditorialButton to retain an existing application's presentation; it does not remove the coarse-pointer minimum target. React 19 button refs are forwarded. Keep navigation as anchors, not press handlers.
 
@@ -14,7 +14,7 @@ Use `unstyled` on EditorialButton to retain an existing application's presentati
 
 For same-page work, resolution clears pending immediately and allows the next independent action. With `waitForNavigation: true`, pending lasts until pagehide/restored pageshow, cancellation, or deadline; a failed navigation cannot lock the control indefinitely. A late response from an abandoned action cannot clear a newer action's lock. Cancellation settles run callers. Unmount aborts and clears timers without state updates.
 
-Page lifecycle resets are shared by ordinary press state and async state through a single subscription. They clear stale gestures and compatibility-click suppression on pagehide and persisted pageshow. Pointer cancellation also cancels the touch fallback. No unconditional reload, broad touch interception, or fixed tap lockout is added. This follows the [documented page restoration events](https://developer.mozilla.org/en-US/docs/Web/API/Window/pageshow_event).
+Page lifecycle resets are shared by ordinary press state and async state through a single subscription. They clear stale gestures and compatibility-click suppression on pagehide and persisted pageshow. Pointer cancellation also cancels the touch fallback. The contract does not attach React touch handlers, so caller touch handlers pass through unchanged. No unconditional reload, broad touch interception, or fixed tap lockout is added. This follows the [documented page restoration events](https://developer.mozilla.org/en-US/docs/Web/API/Window/pageshow_event).
 
 Aborting a client request is **not** rollback of a server mutation. Applications must reconcile an uncertain result before retrying destructive work. Externally controlled loading/disabled state remains the application's responsibility.
 
