@@ -1,6 +1,6 @@
 {
   "name": "@wmjoon/editorial-design-system",
-  "version": "0.1.64",
+  "version": "0.1.66",
   "description": "Shared editorial tokens and Markdown renderer for WMJOON properties.",
   "license": "MIT",
   "private": false,
@@ -23,7 +23,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "node --test scripts/*.test.mjs",
+    "test": "npm run build && node --test scripts/*.test.mjs",
+    "test:interactions": "node scripts/interaction-browser.cjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepublishOnly": "npm run build"
@@ -55,6 +56,7 @@
     "@storybook/react-vite": "^10.5.5",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "playwright": "1.62.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "storybook": "^10.5.5",

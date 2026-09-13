@@ -8,12 +8,15 @@ test('all shared button variants use the same press contract', () => {
   assert.match(read('editorial-controls.tsx'), /useEditorialPress/);
   assert.match(read('editorial-tabs.tsx'), /EditorialButton/);
 });
-test('gesture fallback retains native activation and avoids time-based lockout', () => {
+test('pointer fallback retains native activation and avoids delegated touch interception', () => {
   const source = read('editorial-press.ts');
   assert.doesNotMatch(source, /Date.now|700|setTimeout/);
   assert.match(source, /event.currentTarget.click\(\)/);
   assert.match(source, /event.currentTarget.disabled/);
-  assert.match(source, /onTouchCancel/);
+  assert.match(source, /onPointerUp/);
+  assert.match(source, /onPointerCancel/);
   assert.match(source, /Math.hypot/);
-  assert.match(source, /event.touches.length !== 1/);
+  assert.match(source, /event\.isPrimary/);
+  assert.match(source, /onPointerDown[\s\S]*?event\.preventDefault\(\)/);
+  assert.doesNotMatch(source, /onTouchStart|onTouchMove|onTouchEnd/);
 });

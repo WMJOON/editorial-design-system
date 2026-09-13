@@ -1,4 +1,8 @@
 export { EditorialMarkdown } from "./editorial-markdown.js";
+export { useEditorialAsyncAction } from "./editorial-async-action.js";
+export type { EditorialAsyncActionOptions } from "./editorial-async-action.js";
+export { EditorialActionTimeoutError } from "./editorial-action-controller.js";
+export type { EditorialAction, EditorialActionOptions, EditorialActionResult } from "./editorial-action-controller.js";
 export { EditorialTabs } from "./editorial-tabs.js";
 export type { EditorialTabsProps } from "./editorial-tabs.js";
 export { EditorialButton, EditorialIconButton } from "./editorial-actions.js";
