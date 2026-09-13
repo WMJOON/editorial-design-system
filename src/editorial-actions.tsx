@@ -18,8 +18,8 @@ export type EditorialButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 /** A labelled action. Use a native button so form, keyboard, and disabled behaviour remain intact. */
 export function EditorialButton({ className, children, variant = "secondary", size = "md", type = "button", unstyled = false, pending = false, ref, ...attributes }: EditorialButtonProps) {
   const props = { ...attributes, disabled: attributes.disabled || pending };
-  const press = useEditorialPress(props.onClick, props);
-  return <button {...props} {...press} ref={ref} type={type} aria-busy={pending || attributes["aria-busy"]} data-editorial-control="button" className={[!unstyled && "editorial-button", !unstyled && `editorial-button--${variant}`, !unstyled && `editorial-button--${size}`, className].filter(Boolean).join(" ")}>{children}</button>;
+  const press = useEditorialPress(props.onClick, props, ref);
+  return <button {...props} {...press} type={type} aria-busy={pending || attributes["aria-busy"]} data-editorial-control="button" className={[!unstyled && "editorial-button", !unstyled && `editorial-button--${variant}`, !unstyled && `editorial-button--${size}`, className].filter(Boolean).join(" ")}>{children}</button>;
 }
 
 export type EditorialIconButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> & {

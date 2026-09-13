@@ -9,21 +9,24 @@ const increment=page.getByRole('button',{name:'Increment',exact:true});
 const count=()=>page.getByTestId('count').textContent();
 await increment.tap();assert.equal(await count(),'1');
 await increment.tap();await increment.tap();assert.equal(await count(),'3','rapid distinct taps');
-await increment.focus();await increment.press('Enter');await increment.press('Space');assert.equal(await count(),'5');
+await page.getByRole('button',{name:'Replace after press',exact:true}).tap();assert.equal(await count(),'4','DOM replacement must activate exactly once');assert.equal(await page.getByTestId('replacement').textContent(),'Replaced');
+await increment.focus();await increment.press('Enter');await increment.press('Space');assert.equal(await count(),'6');
 async function gesture(locator,kind){await locator.evaluate((button,kind)=>{
- const send=(type,init={})=>button.dispatchEvent(new PointerEvent(type,{bubbles:true,cancelable:true,pointerId:1,pointerType:'touch',isPrimary:true,clientX:10,clientY:10,...init}));
- send('pointerdown');
- if(kind==='move')send('pointermove',{clientY:50});
- if(kind==='cancel')send('pointercancel');
- if(kind==='multi')send('pointerdown',{pointerId:2,isPrimary:false});
+ const touch=(id,x=10,y=10)=>({identifier:id,target:button,clientX:x,clientY:y,screenX:x,screenY:y,pageX:x,pageY:y});
+ const first=touch(1);
+ const send=(type,touches,changed)=>{const event=new Event(type,{bubbles:true,cancelable:true});Object.defineProperties(event,{touches:{value:touches},targetTouches:{value:touches},changedTouches:{value:changed}});button.dispatchEvent(event);};
+ send('touchstart',[first],[first]);
+ if(kind==='move'){const moved=touch(1,10,50);send('touchmove',[moved],[moved]);}
+ if(kind==='cancel')send('touchcancel',[],[first]);
+ if(kind==='multi'){const second=touch(2);send('touchstart',[first,second],[second]);}
  if(kind==='restore')window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true}));
- send('pointerup');
+ send('touchend',[],[first]);
 },kind);}
-for(const kind of ['move','cancel','multi','restore']){await gesture(increment,kind);assert.equal(await count(),'5',kind+' must not activate');}
-await gesture(page.getByRole('button',{name:'Disabled',exact:true}),'tap');assert.equal(await count(),'5');
-await gesture(page.getByRole('button',{name:'Cancelled by caller'}),'tap');assert.equal(await count(),'5');
-await gesture(increment,'tap');assert.equal(await count(),'6','pointer-only fallback');
-await page.getByRole('button',{name:'Icon increment'}).tap();assert.equal(await count(),'7');
+for(const kind of ['move','cancel','multi','restore']){await gesture(increment,kind);assert.equal(await count(),'6',kind+' must not activate');}
+await gesture(page.getByRole('button',{name:'Disabled',exact:true}),'tap');assert.equal(await count(),'6');
+await page.getByRole('button',{name:'Cancelled by caller'}).tap();assert.equal(await count(),'6');
+await gesture(increment,'tap');assert.equal(await count(),'7','native touch fallback');
+await page.getByRole('button',{name:'Icon increment'}).tap();assert.equal(await count(),'8');
 await page.getByRole('button',{name:'Submit',exact:true}).tap();assert.equal(await page.getByTestId('submitted').textContent(),'1');
 await page.getByRole('tab',{name:'First',exact:true}).tap();await page.getByRole('tab',{name:'First',exact:true}).press('ArrowRight');assert.equal(await page.getByRole('tab',{name:'Last',exact:true}).getAttribute('aria-selected'),'true');
 await page.getByRole('button',{name:'A',exact:true}).tap();assert.equal(await page.getByRole('tab',{name:'First',exact:true}).getAttribute('aria-selected'),'true');
