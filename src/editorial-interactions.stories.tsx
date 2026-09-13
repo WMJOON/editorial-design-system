@@ -8,10 +8,12 @@ export function TouchKeyboardAndForms() {
   const [count, setCount] = useState(0);
   const [tab, setTab] = useState("a");
   const [submitted, setSubmitted] = useState(0);
+  const [replaceable, setReplaceable] = useState(true);
   return <><output data-testid="count">{count}</output>
     <EditorialButton onClick={() => setCount(n => n + 1)}>Increment</EditorialButton>
     <EditorialButton disabled onClick={() => setCount(n => n + 100)}>Disabled</EditorialButton>
     <EditorialButton onPointerUp={e => e.preventDefault()} onClick={() => setCount(n => n + 100)}>Cancelled by caller</EditorialButton>
+    {replaceable ? <EditorialButton onClick={() => { setCount(n => n + 1); setReplaceable(false); }}>Replace after press</EditorialButton> : <span data-testid="replacement">Replaced</span>}
     <EditorialIconButton label="Icon increment" onClick={() => setCount(n => n + 1)}>+</EditorialIconButton>
     <EditorialSegmentedControl label="Choice" options={[{value:"a",label:"A"},{value:"b",label:"B"}]} value={tab} onChange={setTab}/>
     <EditorialTabs label="Tabs" value={tab} onChange={setTab} options={[{value:"a",label:"First",id:"tab-a",panelId:"panel"},{value:"x",label:"Disabled tab",id:"tab-x",panelId:"panel",disabled:true},{value:"b",label:"Last",id:"tab-b",panelId:"panel"}]}/>
