@@ -82,11 +82,7 @@ type PressableOptionProps = {
   onChange: (value: string) => void;
 };
 
-/**
- * iOS Safari can finish a touch gesture without dispatching React's synthetic
- * click. Handle touch directly, then ignore the follow-up synthetic click.
- * Keyboard and mouse interaction continue through the regular click path.
- */
+/** Keep every segmented option on the shared native-click press contract. */
 function PressableOption({ active, label, value, onChange }: PressableOptionProps) {
   const pressHandlers = useEditorialPress(() => onChange(value));
 
