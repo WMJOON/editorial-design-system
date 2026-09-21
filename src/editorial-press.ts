@@ -16,6 +16,22 @@ function assignRef<T>(ref: Ref<T> | undefined, value: T | null) {
   else if (ref) ref.current = value;
 }
 
+// Preserve the public React onClick shape while delivering at the button itself.
+// DOM accessors/methods must keep the native event as their receiver.
+function nativePressEvent(event: MouseEvent, node: HTMLButtonElement): React.MouseEvent<HTMLButtonElement> {
+  return new Proxy(event, {
+    get(target, key) {
+      if (key === "nativeEvent") return target;
+      if (key === "currentTarget") return node;
+      if (key === "isDefaultPrevented") return () => target.defaultPrevented;
+      if (key === "isPropagationStopped") return () => target.cancelBubble;
+      if (key === "persist") return () => {};
+      const value = Reflect.get(target, key, target);
+      return typeof value === "function" ? value.bind(target) : value;
+    },
+  }) as unknown as React.MouseEvent<HTMLButtonElement>;
+}
+
 /**
  * A native touch fallback scoped to one button. Mobile Safari can lose React's
  * delegated pointer/click delivery after restore or hydration. Listening on the
@@ -36,6 +52,7 @@ export function useEditorialPress(
   const onPressRef = useRef(onPress);
   const propsRef = useRef(props);
   const forwardedRefRef = useRef(forwardedRef);
+  const deliveredClicks = useRef(new WeakSet<Event>());
   onPressRef.current = onPress;
   propsRef.current = props;
   forwardedRefRef.current = forwardedRef;
@@ -44,6 +61,23 @@ export function useEditorialPress(
     gesture.current = null;
     pendingActivation.current = null;
     pointerCancelled.current = false;
+  }, []);
+
+  const deliverClick = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
+    const nativeEvent = event.nativeEvent;
+    if (deliveredClicks.current.has(nativeEvent)) return;
+    deliveredClicks.current.add(nativeEvent);
+    if (propsRef.current.disabled || event.currentTarget.disabled) return;
+    const activation = pendingActivation.current;
+    if (nativeEvent.isTrusted && event.detail > 0 && activation) {
+      if (activation.cancelled || activation.fallbackDispatched) {
+        pendingActivation.current = null;
+        event.preventDefault();
+        return;
+      }
+      activation.nativeClickObserved = true;
+    }
+    onPressRef.current?.(event);
   }, []);
 
   useEffect(() => subscribeEditorialPageReset(reset), [reset]);
@@ -55,7 +89,10 @@ export function useEditorialPress(
     assignRef(forwardedRefRef.current, node);
     if (!node) return;
 
+    const onNativeClick = (event: MouseEvent) => deliverClick(nativePressEvent(event, node));
+
     const onPointerDown = (event: PointerEvent) => {
+      if (event.pointerType !== "touch") pendingActivation.current = null;
       if (event.pointerType === "touch" && event.isPrimary && !node.disabled && event.cancelable) event.preventDefault();
     };
     const onTouchStart = (event: TouchEvent) => {
@@ -96,12 +133,14 @@ export function useEditorialPress(
       });
     };
 
+    node.addEventListener("click", onNativeClick);
     node.addEventListener("pointerdown", onPointerDown, { passive: false });
     node.addEventListener("touchstart", onTouchStart, { passive: true });
     node.addEventListener("touchmove", onTouchMove, { passive: true });
     node.addEventListener("touchcancel", onTouchCancel, { passive: true });
     node.addEventListener("touchend", onTouchEnd, { passive: false });
     cleanupNode.current = () => {
+      node.removeEventListener("click", onNativeClick);
       node.removeEventListener("pointerdown", onPointerDown);
       node.removeEventListener("touchstart", onTouchStart);
       node.removeEventListener("touchmove", onTouchMove);
@@ -109,7 +148,7 @@ export function useEditorialPress(
       node.removeEventListener("touchend", onTouchEnd);
       assignRef(forwardedRefRef.current, null);
     };
-  }, [reset]);
+  }, [reset, deliverClick]);
 
   return {
     ref,
@@ -153,18 +192,6 @@ export function useEditorialPress(
       propsRef.current.onPointerUp?.(event);
       if (event.defaultPrevented && gesture.current) gesture.current.cancelled = true;
     },
-    onClick(event: React.MouseEvent<HTMLButtonElement>) {
-      if (propsRef.current.disabled || event.currentTarget.disabled) return;
-      const activation = pendingActivation.current;
-      if (event.nativeEvent.isTrusted && event.detail > 0 && activation) {
-        if (activation.cancelled || activation.fallbackDispatched) {
-          pendingActivation.current = null;
-          event.preventDefault();
-          return;
-        }
-        activation.nativeClickObserved = true;
-      }
-      onPressRef.current?.(event);
-    },
+    onClick: deliverClick,
   };
 }
