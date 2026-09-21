@@ -6,6 +6,7 @@ import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import { MermaidDiagram } from "./mermaid-diagram.js";
+import { EditorialWordWrap } from "./editorial-word-wrap.js";
 
 export function EditorialMarkdown({ content, className = "" }: { content: string; className?: string }) {
   return <div className={`editorial-content ${className}`.trim()}>
@@ -17,6 +18,12 @@ export function EditorialMarkdown({ content, className = "" }: { content: string
       ]}
       components={{
         del({ children }) { return <span>{children}</span>; },
+        h1({ children }) { return <h1><EditorialWordWrap>{children}</EditorialWordWrap></h1>; },
+        h2({ children }) { return <h2><EditorialWordWrap>{children}</EditorialWordWrap></h2>; },
+        h3({ children }) { return <h3><EditorialWordWrap>{children}</EditorialWordWrap></h3>; },
+        h4({ children }) { return <h4><EditorialWordWrap>{children}</EditorialWordWrap></h4>; },
+        h5({ children }) { return <h5><EditorialWordWrap>{children}</EditorialWordWrap></h5>; },
+        h6({ children }) { return <h6><EditorialWordWrap>{children}</EditorialWordWrap></h6>; },
         table({ children }) {
           return <div className="editorial-table-scroll" tabIndex={0} aria-label="표를 가로로 스크롤해 전체 내용을 볼 수 있습니다."><table>{children}</table></div>;
         },
