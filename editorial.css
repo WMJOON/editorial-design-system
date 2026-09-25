@@ -347,6 +347,8 @@ html { font-size: var(--editorial-root-font-size); }
 .editorial-series-context { display:flex; flex-wrap:wrap; align-items:center; gap:.45rem 1rem; margin:2rem 0 0; padding:0 0 1rem; border-bottom:1px solid var(--editorial-line); }
 .editorial-series-context a { color:inherit; text-decoration:none; }
 .editorial-series-count { margin-left:auto; white-space:nowrap; }
+.editorial-series-browse { display:none; }
+@media (max-width:720px) { .editorial-series-browse { display:block; flex-basis:100%; } }
 .editorial-series-next { margin:2rem 0 0; padding:1.5rem 0 0; border-top:2px solid var(--editorial-ink); }
 .editorial-series-label { margin:0 0 .75rem; }
 .editorial-series-next>a { display:grid; gap:.45rem; color:inherit; text-decoration:none; }

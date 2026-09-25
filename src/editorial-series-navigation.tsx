@@ -5,13 +5,15 @@ export type EditorialSeriesContextProps = {
   href: string;
   position: number;
   total?: number;
+  allSeriesHref?: string;
 };
 
-export function EditorialSeriesContext({ title, href, position, total }: EditorialSeriesContextProps) {
+export function EditorialSeriesContext({ title, href, position, total, allSeriesHref }: EditorialSeriesContextProps) {
   return <nav className="editorial-series-context" aria-label="현재 글의 시리즈">
     <EditorialTypography variant="meta">시리즈 글</EditorialTypography>
     <a href={href}><EditorialTypography variant="title-5">{title}</EditorialTypography> · 전체 글 보기 →</a>
     <EditorialTypography variant="meta" className="editorial-series-count">{position} / {total ?? "?"}편</EditorialTypography>
+    {allSeriesHref && <a className="editorial-series-browse" href={allSeriesHref}><EditorialTypography variant="body-sm">다른 시리즈 보기 →</EditorialTypography></a>}
   </nav>;
 }
 
