@@ -351,11 +351,15 @@ html { font-size: var(--editorial-root-font-size); }
 @media (max-width:720px) { .editorial-series-browse { display:block; flex-basis:100%; } }
 .editorial-series-next { margin:2rem 0 0; padding:1.5rem 0 0; border-top:2px solid var(--editorial-ink); }
 .editorial-series-label { margin:0 0 .75rem; }
-.editorial-series-next>a { display:grid; gap:.45rem; color:inherit; text-decoration:none; }
-.editorial-series-next>a>.editorial-title-3 { overflow-wrap:anywhere; }
-.editorial-series-next>a:hover>.editorial-title-3,.editorial-series-next>p a:hover,.editorial-series-context a:hover { color:var(--editorial-link); }
-.editorial-series-end { margin:0; }
-.editorial-series-next>p a { color:inherit; text-decoration:underline; text-underline-offset:.2em; }
+.editorial-series-steps { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid var(--editorial-line); border-bottom:1px solid var(--editorial-line); }
+.editorial-series-step { display:flex; flex-direction:column; align-items:flex-start; gap:.45rem; min-width:0; padding:1.25rem 1.25rem 1.25rem 0; color:inherit; text-decoration:none; }
+.editorial-series-step+.editorial-series-step { border-left:1px solid var(--editorial-line); padding-left:1.25rem; }
+.editorial-series-step>.editorial-title-5 { overflow-wrap:anywhere; }
+.editorial-series-step>.editorial-type-body-sm:last-child { margin-top:auto; }
+.editorial-series-step--empty { color:var(--editorial-muted); }
+.editorial-series-step:hover>.editorial-title-5,.editorial-series-all:hover,.editorial-series-context a:hover { color:var(--editorial-link); }
+.editorial-series-all { display:inline-block; margin-top:1rem; color:inherit; text-decoration:underline; text-underline-offset:.2em; }
+@media (max-width:720px) { .editorial-series-steps { grid-template-columns:minmax(0,1fr); }.editorial-series-step+.editorial-series-step { border-left:0; border-top:1px solid var(--editorial-line); padding-left:0; }.editorial-series-step { padding:1rem 0; } }
 .editorial-discovery-sections { display:grid; gap:2rem; }
 .editorial-discovery-sections>section { min-width:0; }
 .editorial-discovery-heading { margin:0 0 1rem; }
