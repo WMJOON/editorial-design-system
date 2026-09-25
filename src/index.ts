@@ -1,6 +1,8 @@
 export { EditorialMarkdown } from "./editorial-markdown.js";
 export { EditorialSeriesContext, EditorialSeriesNext } from "./editorial-series-navigation.js";
 export type { EditorialSeriesContextProps, EditorialSeriesNextProps } from "./editorial-series-navigation.js";
+export { EditorialTypography } from "./editorial-typography.js";
+export type { EditorialTypographyProps } from "./editorial-typography.js";
 export { useEditorialAsyncAction } from "./editorial-async-action.js";
 export type { EditorialAsyncActionOptions } from "./editorial-async-action.js";
 export { EditorialActionTimeoutError } from "./editorial-action-controller.js";
