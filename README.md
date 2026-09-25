@@ -40,7 +40,7 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 - `EditorialButton` and `EditorialIconButton`: labelled actions in `sm | md | lg`.
 - `EditorialTag`: one topical taxonomy facet in `sm | md | lg`.
 - `EditorialBadge`: one mutually exclusive status, type, or count in `sm | md | lg`.
-- `EditorialInput`, `EditorialSelect`, `EditorialCheckbox`, and `EditorialTextArea`: labelled native form controls.
+- `EditorialSelect`: labelled native select for mutually exclusive options.
 
 ### Molecules
 
@@ -48,7 +48,6 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 - `EditorialSegmentedControl`: a compact fixed-option selection control.
 - `EditorialNav`: brand, navigation links, and trailing actions.
 - `EditorialSegmentedControl`: use this for `라이트 | 다크 | 시스템`; persistence belongs to each consuming application.
-- `EditorialMetricStrip` and `EditorialContentCard`: operations metadata and content units.
 
 ### Organisms
 
@@ -57,7 +56,6 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 - `EditorialArticleHeader`: metadata, page title, subtitle, and tags.
 - `EditorialSiteIntro`, `EditorialTopicBar`, `EditorialTopicIndex`, and `EditorialSiteFooter`: the shared fluid site shell for landing and index pages.
 - `EditorialCollection`: shared list/card content collection for feeds, archives, and topic pages.
-- `EditorialKanbanBoard` and `EditorialEditorShell`: presentational operations organisms; the backoffice app owns its drag, save, and filesystem API behavior.
 
 `EditorialMarkdown` standardizes typography, dark mode, and a fixed 720px reading measure. The components are intentionally editorial primitives; product-specific dashboard UI remains in each consuming app.
 
@@ -80,7 +78,6 @@ Visual similarity alone is not a component boundary. The shared organisms consum
 
 - A content type such as `essay` or `framework` is an `EditorialBadge`.
 - A taxonomy such as `knowledge systems` or `reader path` is an `EditorialTag`; several facets render through `EditorialTags`.
-- `EditorialContentCard` composes those atoms directly, rather than reproducing their borders or typography in local CSS.
 
 This keeps a Storybook example, its DOM semantics, and the interface used by the backoffice aligned.
 

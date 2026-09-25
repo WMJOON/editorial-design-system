@@ -5,6 +5,7 @@ export type EditorialTypographyProps = {
   variant: "meta" | "body" | "body-sm" | "title-3" | "title-5";
   children: ReactNode;
   className?: string;
+  id?: string;
 };
 
 const variantClass: Record<EditorialTypographyProps["variant"], string> = {
@@ -15,6 +16,6 @@ const variantClass: Record<EditorialTypographyProps["variant"], string> = {
   "title-5": "editorial-title-5",
 };
 
-export function EditorialTypography({ as: Tag = "span", variant, children, className }: EditorialTypographyProps) {
-  return <Tag className={[variantClass[variant], className].filter(Boolean).join(" ")}>{children}</Tag>;
+export function EditorialTypography({ as: Tag = "span", variant, children, className, id }: EditorialTypographyProps) {
+  return <Tag id={id} className={[variantClass[variant], className].filter(Boolean).join(" ")}>{children}</Tag>;
 }
