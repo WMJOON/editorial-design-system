@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes } from "react";
+import { useId, type SelectHTMLAttributes } from "react";
 import type { EditorialControlSize } from "./editorial-actions.js";
 import { useEditorialPress } from "./editorial-press.js";
 
@@ -21,46 +21,6 @@ export function EditorialSelect({ className, id, label, options, size = "md", ..
     <select {...props} id={selectId} className={[`editorial-input--${size}`, className].filter(Boolean).join(" ")}>
       {options.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
     </select>
-  </label>;
-}
-
-export type EditorialInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "children" | "size"> & {
-  label: string;
-  size?: EditorialControlSize;
-};
-
-export function EditorialInput({ className, id, label, size = "md", type = "text", ...props }: EditorialInputProps) {
-  const generatedId = useId();
-  const inputId = id ?? generatedId;
-  return <label className="editorial-input-field" htmlFor={inputId}>
-    <span>{label}</span>
-    <input {...props} id={inputId} type={type} className={["editorial-input", `editorial-input--${size}`, className].filter(Boolean).join(" ")} />
-  </label>;
-}
-
-export type EditorialTextAreaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "children"> & {
-  label: string;
-  size?: EditorialControlSize;
-  labelHidden?: boolean;
-};
-
-export function EditorialTextArea({ className, id, label, size = "md", labelHidden = false, ...props }: EditorialTextAreaProps) {
-  const generatedId = useId();
-  const inputId = id ?? generatedId;
-  return <label className="editorial-input-field" htmlFor={inputId}>
-    <span className={labelHidden ? "editorial-visually-hidden" : undefined}>{label}</span>
-    <textarea {...props} id={inputId} className={["editorial-textarea", `editorial-input--${size}`, className].filter(Boolean).join(" ")} />
-  </label>;
-}
-
-export type EditorialCheckboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, "children" | "type"> & { label: string };
-
-export function EditorialCheckbox({ className, id, label, ...props }: EditorialCheckboxProps) {
-  const generatedId = useId();
-  const inputId = id ?? generatedId;
-  return <label className="editorial-checkbox" htmlFor={inputId}>
-    <input {...props} id={inputId} type="checkbox" className={className} />
-    <span>{label}</span>
   </label>;
 }
 
