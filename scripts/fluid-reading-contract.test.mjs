@@ -16,7 +16,8 @@ test("one bounded root drives body and title typography", () => {
 
 test("reading measure locks at 720px while rhythm follows the root", () => {
   assert.match(css, /--editorial-reading-measure:\s*720px/);
-  assert.match(css, /--editorial-space-inline-gutter:\s*1\.25rem/);
+  assert.match(css, /--editorial-ref-space-5:\s*1\.25rem/);
+  assert.match(css, /--editorial-space-inline-gutter:\s*var\(--editorial-ref-space-5\)/);
   assert.doesNotMatch(css, /--editorial-space-(?:inline-gutter|content-block|section|article-block|card-gap|list-gap):\s*clamp\(/);
   assert.match(css, /\.editorial-article\s*\{[^}]*var\(--editorial-reading-measure\)[^}]*var\(--editorial-space-inline-gutter\)/s);
 });

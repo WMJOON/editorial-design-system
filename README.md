@@ -106,6 +106,20 @@ Use semantic tokens in consumer styles rather than literal hex values:
 - Editing and feedback: `--editorial-code-bg`, `--editorial-code-fg`, `--editorial-warning-bg`, `--editorial-warning-fg`
 - Warm operations surfaces: `--editorial-canvas-warm`, `--editorial-surface-warm`, `--editorial-surface-strong`
 
+### Token hierarchy
+
+Use three levels so a page can change its layout without inventing another palette:
+
+| Level | Example | Purpose |
+| --- | --- | --- |
+| Foundation | `--editorial-ref-space-4`, `--editorial-font-serif` | Reusable spacing and type values; do not use these to express a component's meaning. |
+| Semantic | `--editorial-fg`, `--editorial-action-bg`, `--editorial-focus-ring` | Light and dark roles used across products. |
+| Component | `--editorial-space-card-gap`, `--editorial-size-control-md` | A named layout or interaction constraint. |
+
+`--editorial-accent` is an illustrative orange. On the light canvas it does not provide enough contrast for white button text or a focus ring. Use `--editorial-action-bg` with `--editorial-action-fg` for filled actions, the matching `--editorial-action-hover-*` pair for hover, and `--editorial-focus-ring` for keyboard focus. The light hover pair has a 6.05:1 contrast ratio; the dark hover pair has a 9.01:1 ratio. `--editorial-on-accent` is dark text for any direct use of the illustrative orange.
+
+The shared package owns token values. A consumer may alias them for migration, but should not duplicate theme hex values. Keep line width, minimum control size, and border width fixed. Map repeated page spacing to the reference scale, and reserve one-off measurements for content-dependent layout.
+
 ## Releases
 
 Create and push a `v*` tag after updating `package.json`. GitHub Actions publishes the scoped private package to GitHub Packages.
