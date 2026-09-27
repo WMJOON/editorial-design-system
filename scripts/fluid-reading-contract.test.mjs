@@ -31,7 +31,7 @@ test("borders and control targets remain fixed geometry", () => {
 
 test("card geometry scales in rem while Mermaid keeps its fixed minimum", () => {
   assert.match(css, /\.editorial-collection-grid\s*\{[^}]*minmax\(20rem,1fr\)/s);
-  assert.match(css, /\.editorial-collection-card-body\s*\{[^}]*min-height:9\.0625rem;[^}]*padding:1\.0625rem 2\.625rem 1\.25rem 1\.0625rem/s);
+  assert.match(css, /\.editorial-collection-card-body\s*\{[^}]*min-height:9\.0625rem;[^}]*padding:var\(--editorial-ref-space-4\) var\(--editorial-ref-space-10\) var\(--editorial-ref-space-5\) var\(--editorial-ref-space-4\)/s);
   assert.match(css, /--editorial-mermaid-min-inline-size:\s*640px/);
   assert.doesNotMatch(css, /--editorial-mermaid-min-inline-size:\s*40rem/);
 });

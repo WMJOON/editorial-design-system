@@ -13,11 +13,28 @@ const rows = [
   ["Code", "ui-monospace / 0.85rem", <pre className="type-specimen-code">claim: "AI 인용은 추천을 보장하지 않는다."\nstatus: verified</pre>],
 ] as const;
 
+const typeRoles = [
+  ["Micro", "--editorial-type-micro-size"],
+  ["Caption", "--editorial-type-caption-size"],
+  ["Metadata", "--editorial-type-meta-size"],
+  ["Label", "--editorial-type-label-size"],
+  ["Control", "--editorial-type-control-size"],
+  ["Small body", "--editorial-type-small-size"],
+  ["Body", "--editorial-type-body-size"],
+  ["Lead", "--editorial-type-lead-size"],
+  ["Emphasis", "--editorial-type-emphasis-size"],
+  ["List title", "--editorial-type-list-title-size"],
+  ["Section", "--editorial-type-section-size"],
+  ["Display", "--editorial-type-display-size"],
+] as const;
+
 const meta = { title: "Foundations/Typography", parameters: { layout: "padded" } } satisfies Meta;
 export default meta;
 type Story = StoryObj;
 
 export const FullScale: Story = { render: () => <section className="type-specimen"><p className="editorial-kicker">Typography reference</p><p className="type-specimen-intro">브랜드용 display와 문서의 h1–h6, 본문 및 코드를 한 화면에서 비교합니다. 제목 위계는 Markdown과 페이지 제목에서 같은 역할을 유지합니다.</p>{rows.map(([label, token, sample]) => <div className="type-specimen-row" key={label}><div className="type-specimen-label">{label}<br />{token}</div><div>{sample}</div></div>)}</section> };
+
+export const RoleTokens: Story = { render: () => <section className="type-role-scale"><h2>Text size roles</h2><p>모든 크기는 같은 유동 루트에서 계산됩니다. 콘텐츠의 역할에 맞는 토큰을 선택합니다.</p>{typeRoles.map(([label, token]) => <div className="type-role-row" key={token}><code>{label}<br />{token}</code><span style={{ fontSize: `var(${token})` }}>{label === "Section" || label === "Display" ? "읽는 사람" : "읽는 사람에게 맞춘 글자 크기"}</span></div>)}</section> };
 
 export const FluidReadingArticle: Story = {
   parameters: { layout: "fullscreen" },

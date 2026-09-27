@@ -70,6 +70,10 @@ The document root defines one fluid `rem`: it starts at 15px, follows a restrain
 - Root-relative rhythm: `--editorial-space-inline-gutter`, `--editorial-space-content-block`, `--editorial-space-section`, `--editorial-space-card-gap`
 - Thumbnail frame: `--editorial-thumbnail-ratio` (`16 / 9` for cards and article covers)
 
+Text sizes in shared components and the site use role tokens. Choose `micro`/`caption`/`meta` for secondary information, `label`/`control` for interface text, `small`/`body`/`lead` for reading, and named title, section, or display roles for headings. Control variants use `--editorial-type-control-sm-size` and `--editorial-type-control-lg-size`; document headings keep their own semantic title scale. Storybook's **Foundations / Typography / Role Tokens** shows the scale in context.
+
+Margins, padding, gaps, and placement offsets use `--editorial-ref-space-*`. One step is `.25rem`; compact controls may use half steps such as `0-5` and `2-5`. Semantic aliases such as `--editorial-space-content-block` select from that scale. The migration consolidated nearby legacy values, changing a text size by at most `.05rem` and a spacing value by at most `.125rem`. Keep zeros, automatic margins, and content-dependent or fixed geometry outside this rhythm scale.
+
 Consumers may override these semantic tokens at a theme or product boundary. Keep `--editorial-reading-measure`, `--editorial-mermaid-min-inline-size`, `--editorial-border-width`, and `--editorial-size-control-*` fixed: line length, readable diagram width, hairline borders, and touch targets are constraints rather than fluid decoration.
 
 ### Composition contract
