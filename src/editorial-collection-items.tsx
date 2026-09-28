@@ -1,16 +1,17 @@
 import type { EditorialCollectionItem } from "./editorial-collection.js";
 import { EditorialWordWrap } from "./editorial-word-wrap.js";
+import { EditorialTypography } from "./editorial-typography.js";
 
 /** Molecule: one content item in a chronological editorial list. */
-export type EditorialCollectionListItemProps = Pick<EditorialCollectionItem, "href" | "title" | "category" | "date" | "excerpt"> & { id?: string; showExcerpt?: boolean };
+export type EditorialCollectionListItemProps = Pick<EditorialCollectionItem, "href" | "title" | "category" | "date" | "excerpt"> & { id?: string; showExcerpt?: boolean; titleVariant?: "title-2" | "title-5" };
 
-export function EditorialCollectionListItem({ id, href, title, category, date, excerpt, showExcerpt = false }: EditorialCollectionListItemProps) {
-  return <a href={href} className="editorial-collection-list-item" data-analytics-event="select_content" data-analytics-content-type="article" data-analytics-content-id={id ?? href} data-analytics-content-name={title} data-analytics-content-category={category} data-analytics-link-location="collection_list"><time className="editorial-type-meta">{date}</time><div>{category && <p className="editorial-collection-meta editorial-type-meta">{category}</p>}<h2 className="editorial-title-2"><EditorialWordWrap>{title}</EditorialWordWrap></h2>{showExcerpt && excerpt && <p className="editorial-collection-excerpt editorial-type-body-sm">{excerpt}</p>}</div><span className="editorial-collection-arrow" aria-hidden="true">→</span></a>;
+export function EditorialCollectionListItem({ id, href, title, category, date, excerpt, showExcerpt = false, titleVariant = "title-2" }: EditorialCollectionListItemProps) {
+  return <a href={href} className="editorial-collection-list-item" data-analytics-event="select_content" data-analytics-content-type="article" data-analytics-content-id={id ?? href} data-analytics-content-name={title} data-analytics-content-category={category} data-analytics-link-location="collection_list"><time className="editorial-type-meta">{date}</time><div>{category && <p className="editorial-collection-meta editorial-type-meta">{category}</p>}<EditorialTypography as="h2" variant={titleVariant}><EditorialWordWrap>{title}</EditorialWordWrap></EditorialTypography>{showExcerpt && excerpt && <p className="editorial-collection-excerpt editorial-type-body-sm">{excerpt}</p>}</div><span className="editorial-collection-arrow" aria-hidden="true">→</span></a>;
 }
 
 /** Molecule: a chronological list whose only display variable is the excerpt. */
-export function EditorialCollectionList({ items, showExcerpt = false }: { items: EditorialCollectionItem[]; showExcerpt?: boolean }) {
-  return <div className="editorial-collection-list">{items.map(({ id, ...item }) => <EditorialCollectionListItem {...item} id={id} key={id} showExcerpt={showExcerpt} />)}</div>;
+export function EditorialCollectionList({ items, showExcerpt = false, titleVariant = "title-2" }: { items: EditorialCollectionItem[]; showExcerpt?: boolean; titleVariant?: "title-2" | "title-5" }) {
+  return <div className="editorial-collection-list">{items.map(({ id, ...item }) => <EditorialCollectionListItem {...item} id={id} key={id} showExcerpt={showExcerpt} titleVariant={titleVariant} />)}</div>;
 }
 
 /** Molecule: one content item in a visual cover-card collection. */
