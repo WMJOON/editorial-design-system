@@ -5,7 +5,7 @@ import test from "node:test";
 const css = await readFile(new URL("../editorial.css", import.meta.url), "utf8");
 
 test("one bounded root drives body and title typography", () => {
-  assert.match(css, /--editorial-root-font-size:\s*clamp\(0\.9375rem,\s*calc\(0\.85rem \+ 0\.43vw\),\s*1\.125rem\)/);
+  assert.match(css, /--editorial-root-font-size:\s*clamp\(0\.90625rem,\s*calc\(0\.84375rem \+ 0\.25vw\),\s*1\.0625rem\)/);
   assert.match(css, /html\s*\{\s*font-size:\s*var\(--editorial-root-font-size\);\s*\}/);
   assert.match(css, /--editorial-type-body-size:\s*1rem/);
   assert.match(css, /--editorial-type-title-1-size:\s*2\.5rem/);
@@ -14,10 +14,14 @@ test("one bounded root drives body and title typography", () => {
   assert.doesNotMatch(css, /\.editorial-content\s*\{[^}]*font:\s*16px/s);
 });
 
-test("reading measure locks at 720px while rhythm follows the root", () => {
+test("reading measure and UI rhythm stay fixed while type follows the root", () => {
   assert.match(css, /--editorial-reading-measure:\s*720px/);
-  assert.match(css, /--editorial-ref-space-5:\s*1\.25rem/);
-  assert.match(css, /--editorial-space-inline-gutter:\s*var\(--editorial-ref-space-5\)/);
+  assert.match(css, /--editorial-ref-space-1:\s*4px/);
+  assert.match(css, /--editorial-ref-space-5:\s*20px/);
+  assert.match(css, /--editorial-ref-space-0-5:\s*2px/);
+  assert.doesNotMatch(css, /--editorial-ref-space-(?:1-5|2-5|3-5)\b/);
+  assert.match(css, /--editorial-space-inline-gutter:\s*var\(--editorial-ref-space-6\)/);
+  assert.match(css, /@media \(max-width:720px\) \{ :root \{ --editorial-space-inline-gutter: var\(--editorial-ref-space-4\); \} \}/);
   assert.doesNotMatch(css, /--editorial-space-(?:inline-gutter|content-block|section|article-block|card-gap|list-gap):\s*clamp\(/);
   assert.match(css, /\.editorial-article\s*\{[^}]*var\(--editorial-reading-measure\)[^}]*var\(--editorial-space-inline-gutter\)/s);
 });
@@ -29,9 +33,9 @@ test("borders and control targets remain fixed geometry", () => {
   assert.doesNotMatch(css, /--editorial-(?:border-width|size-control-md|size-control-lg):\s*clamp\(/);
 });
 
-test("card geometry scales in rem while Mermaid keeps its fixed minimum", () => {
-  assert.match(css, /\.editorial-collection-grid\s*\{[^}]*minmax\(20rem,1fr\)/s);
-  assert.match(css, /\.editorial-collection-card-body\s*\{[^}]*min-height:9\.0625rem;[^}]*padding:var\(--editorial-ref-space-4\) var\(--editorial-ref-space-10\) var\(--editorial-ref-space-5\) var\(--editorial-ref-space-4\)/s);
+test("card geometry stays fixed while Mermaid keeps its minimum", () => {
+  assert.match(css, /\.editorial-collection-grid\s*\{[^}]*minmax\(320px,1fr\)/s);
+  assert.match(css, /\.editorial-collection-card-body\s*\{[^}]*min-height:145px;[^}]*padding:var\(--editorial-ref-space-4\) var\(--editorial-ref-space-10\) var\(--editorial-ref-space-5\) var\(--editorial-ref-space-4\)/s);
   assert.match(css, /--editorial-mermaid-min-inline-size:\s*640px/);
   assert.doesNotMatch(css, /--editorial-mermaid-min-inline-size:\s*40rem/);
 });

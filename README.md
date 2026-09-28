@@ -61,18 +61,19 @@ import { EditorialMarkdown } from "@wmjoon/editorial-design-system";
 
 ## Fluid reading tokens
 
-The document root defines one fluid `rem`: it starts at 15px, follows a restrained viewport slope, and locks at 18px. Body text is `1rem`; headings, rhythm, and scalable card geometry use proportional `rem` values so the interface grows as one system instead of mixing a fluid body with a fixed 16px root. Line heights remain unitless so they follow the computed size.
+The document root sets reading type to 14.5–17px across viewport widths when the browser's default font size is 16px. It uses `rem` against that browser default, so a reader's larger default also enlarges the text. Body text is `1rem`; headings use proportional `rem` values and line heights remain unitless. UI spacing and card geometry use fixed pixels and respond through layout breakpoints instead.
 
-- Root: `--editorial-root-font-size` (`15px–18px`)
+- Root: `--editorial-root-font-size` (`14.5px–17px` at a 16px browser default, fluid with viewport width)
 - Body: `--editorial-type-body-size` (`1rem`), `--editorial-type-body-line-height`
 - Titles: `--editorial-type-title-1-size` through `--editorial-type-title-3-size`
 - Reading width: `--editorial-reading-measure` (`720px`, fixed)
-- Root-relative rhythm: `--editorial-space-inline-gutter`, `--editorial-space-content-block`, `--editorial-space-section`, `--editorial-space-card-gap`
+- Fixed UI rhythm: `--editorial-space-inline-gutter`, `--editorial-space-content-block`, `--editorial-space-section`, `--editorial-space-card-gap`
+- Container gutter: `--editorial-space-inline-gutter` is 24px on desktop and 16px at 720px and below; site header, footer, page wrapper, and article shell share it.
 - Thumbnail frame: `--editorial-thumbnail-ratio` (`16 / 9` for cards and article covers)
 
-Text sizes in shared components and the site use role tokens. Choose `micro`/`caption`/`meta` for secondary information, `label`/`control` for interface text, `small`/`body`/`lead` for reading, and named title, section, or display roles for headings. Control variants use `--editorial-type-control-sm-size` and `--editorial-type-control-lg-size`; document headings keep their own semantic title scale. Storybook's **Foundations / Typography / Role Tokens** shows the scale in context.
+Text sizes in shared components and the site use role tokens. Choose `micro`/`caption`/`meta` for secondary information, `label`/`control` for interface text, `small`/`body`/`lead` for reading, and named title, section, or display roles for headings. Control variants use `--editorial-type-control-sm-size` and `--editorial-type-control-lg-size`; document headings keep their own semantic title scale. Storybook's **Foundations / Typography / Role Tokens** shows the type roles, **Reading And Ui Scales** compares the two scale systems, and **Foundations / Tokens / Spacing Tokens** shows every spacing value and its rendered width.
 
-Margins, padding, gaps, and placement offsets use `--editorial-ref-space-*`. One step is `.25rem`; compact controls may use half steps such as `0-5` and `2-5`. Semantic aliases such as `--editorial-space-content-block` select from that scale. The migration consolidated nearby legacy values, changing a text size by at most `.05rem` and a spacing value by at most `.125rem`. Keep zeros, automatic margins, and content-dependent or fixed geometry outside this rhythm scale.
+Margins, padding, gaps, and placement offsets use `--editorial-ref-space-*`. The scale starts at `0.5x = 2px`, then uses whole steps of `1x = 4px`, `2x = 8px`, `3x = 12px`, and so on. `0.5x` is reserved for small optical adjustments; intermediate half steps are not part of the scale. Semantic aliases such as `--editorial-space-content-block` select from it. Text size changes do not change the spacing scale. Keep zeros, automatic margins, and content-dependent geometry outside this rhythm scale.
 
 Consumers may override these semantic tokens at a theme or product boundary. Keep `--editorial-reading-measure`, `--editorial-mermaid-min-inline-size`, `--editorial-border-width`, and `--editorial-size-control-*` fixed: line length, readable diagram width, hairline borders, and touch targets are constraints rather than fluid decoration.
 

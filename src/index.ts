@@ -1,4 +1,6 @@
 export { EditorialMarkdown } from "./editorial-markdown.js";
+export { EditorialDivider } from "./editorial-divider.js";
+export type { EditorialDividerProps } from "./editorial-divider.js";
 export { EditorialSeriesContext, EditorialSeriesNext } from "./editorial-series-navigation.js";
 export type { EditorialSeriesContextProps, EditorialSeriesNextProps } from "./editorial-series-navigation.js";
 export { EditorialTypography } from "./editorial-typography.js";

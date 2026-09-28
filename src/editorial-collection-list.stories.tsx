@@ -17,3 +17,4 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
+export const RailTitles: Story = { args: { titleVariant: "title-5" }, decorators: [(Story) => <div style={{ maxWidth: 352 }}><Story /></div>] };

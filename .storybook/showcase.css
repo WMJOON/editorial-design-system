@@ -8,7 +8,7 @@
 @media (max-width:720px) { .type-specimen-row { grid-template-columns: 1fr; gap: var(--editorial-ref-space-2); } }
 .type-role-scale { max-width: 900px; color: var(--editorial-fg); font-family: var(--editorial-font-sans); }
 .type-role-scale h2 { font-family: var(--editorial-font-serif); }
-.type-role-row { display: grid; grid-template-columns: minmax(12rem, 1fr) minmax(0, 2fr); align-items: baseline; gap: var(--editorial-ref-space-4); padding: var(--editorial-ref-space-3) 0; border-bottom: 1px solid var(--editorial-border); }
+.type-role-row { display: grid; grid-template-columns: minmax(192px, 1fr) minmax(0, 2fr); align-items: baseline; gap: var(--editorial-ref-space-4); padding: var(--editorial-ref-space-3) 0; border-bottom: 1px solid var(--editorial-border); }
 .type-role-row code { overflow-wrap: anywhere; }
 .type-role-row span { font-family: var(--editorial-font-serif); line-height: 1.4; overflow-wrap: break-word; word-break: keep-all; }
 @media (max-width:720px) { .type-role-row { grid-template-columns: 1fr; gap: var(--editorial-ref-space-2); } }
