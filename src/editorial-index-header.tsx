@@ -11,7 +11,7 @@ export type EditorialIndexHeaderProps = {
 export function EditorialIndexHeader({ kicker, title, description, className }: EditorialIndexHeaderProps) {
   return <header className={["editorial-index-header", className].filter(Boolean).join(" ")}>
     <p className="editorial-kicker">{kicker}</p>
-    <h1 className="editorial-index-header__title"><EditorialWordWrap>{title}</EditorialWordWrap></h1>
-    {description && <p className="editorial-index-header__description">{description}</p>}
+    <h1 className="editorial-index-header__title editorial-title-1"><EditorialWordWrap>{title}</EditorialWordWrap></h1>
+    {description && <p className="editorial-index-header__description editorial-type-body">{description}</p>}
   </header>;
 }
