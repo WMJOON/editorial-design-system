@@ -261,8 +261,8 @@ html { font-size: var(--editorial-root-font-size); }
 .editorial-site-footer a { color:inherit; text-decoration:none; }
 .editorial-site-footer a:hover { color:var(--editorial-link); }
 .editorial-index-header { min-width:0; color:var(--editorial-ink); font-family:var(--editorial-font-sans); }
-.editorial-index-header__title { max-inline-size:900px; min-width:0; margin:0; color:var(--editorial-ink); font-family:var(--editorial-font-serif); font-size:var(--editorial-type-display-size); font-weight:600; letter-spacing:-.02em; line-height:1.25; }
-.editorial-index-header__description { max-inline-size:550px; margin:var(--editorial-space-content-block) 0 var(--editorial-space-section); color:var(--editorial-muted); font-size:var(--editorial-type-body-size); line-height:1.7; overflow-wrap:break-word; word-break:keep-all; }
+.editorial-index-header__title { min-width:0; margin:0; color:var(--editorial-ink); }
+.editorial-index-header__description { max-inline-size:550px; margin:var(--editorial-space-content-block) 0 var(--editorial-space-section); color:var(--editorial-muted); overflow-wrap:break-word; word-break:keep-all; }
 
 /* Atoms: explicit actions. Keep the interactive target at least 44px high. */
 .editorial-button,.editorial-icon-button { display:inline-flex; align-items:center; justify-content:center; min-height:var(--editorial-size-control-md); border:var(--editorial-border-width) solid var(--editorial-border); background:var(--editorial-bg-surface); color:var(--editorial-fg); font:600 var(--editorial-type-control-size)/1.2 var(--editorial-font-sans); cursor:pointer; transition:background .16s ease,border-color .16s ease,color .16s ease; }
