@@ -4,7 +4,7 @@ import { EditorialCollectionCard } from "./editorial-collection-items.js";
 const meta = {
   title: "Molecules/Editorial Collection/Card",
   component: EditorialCollectionCard,
-  args: { href: "#llm", title: "이 작업에 LLM까지 쓸 필요가 있었나", category: "Framework", date: "2026-07-28", excerpt: "도구를 고르는 일과 문제의 경계를 정하는 일은 다르다.", showExcerpt: true, cover: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" },
+  args: { href: "#llm", title: "이 작업에 LLM까지 쓸 필요가 있었나", category: "Framework", date: "2026-07-28", excerpt: "도구를 고르는 일과 문제의 경계를 정하는 일은 다르다.",  cover: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" },
   parameters: { layout: "padded" },
   decorators: [(Story) => <div style={{ maxWidth: 340 }}><Story /></div>],
 } satisfies Meta<typeof EditorialCollectionCard>;
@@ -16,3 +16,5 @@ export const Default: Story = {};
 export const SmallTitle: Story = { args: { titleSize: "small" } };
 
 export const WithRecommendationContext: Story = { args: { titleSize: "small", context: "관심 주제 · 지식 시스템, 세법·자산운용", analyticsLocation: "home_for_you" } };
+
+export const WithExcerpt: Story = { args: { showExcerpt: true } };

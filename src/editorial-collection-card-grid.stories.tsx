@@ -19,3 +19,5 @@ export const Default: Story = {};
 export const Compact: Story = { args: { sizing: "compact" } };
 
 export const CompactSmallTitles: Story = { args: { sizing: "compact", titleSize: "small" } };
+
+export const WithExcerpts: Story = { args: { showExcerpt: true } };
