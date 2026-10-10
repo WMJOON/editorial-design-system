@@ -17,3 +17,5 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const Compact: Story = { args: { sizing: "compact" } };
+
+export const CompactSmallTitles: Story = { args: { sizing: "compact", titleSize: "small" } };

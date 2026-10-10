@@ -16,7 +16,7 @@ test("the site-shell and analytics API from 0.1.58 remains exported", async () =
   assert.match(index, /EditorialTextLink/);
   assert.match(collection, /data-analytics-event="select_content"/);
   assert.match(collection, /showExcerpt/);
-  assert.match(collection, /EditorialCollectionCardGrid\(\{ items, showExcerpt = true, sizing = "default" \}/);
+  assert.match(collection, /EditorialCollectionCardGrid\(\{ items, showExcerpt = true, sizing = "default", titleSize = "default" \}/);
   assert.match(collection, /showExcerpt=\{showExcerpt\}/);
   assert.match(collection, /EditorialWordWrap/);
   assert.match(header, /data-analytics-event="change_content_view"/);
