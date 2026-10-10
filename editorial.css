@@ -458,3 +458,5 @@ html { font-size: var(--editorial-root-font-size); }
 .editorial-collection-card .editorial-collection-card-title--small { font-size:var(--editorial-type-lead-size); }
 
 .editorial-collection-card-context { margin:0 0 var(--editorial-ref-space-2); color:var(--editorial-muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+.editorial-collection-card:not(.editorial-collection-card--with-excerpt) .editorial-collection-card-body, .editorial-collection-card:not(.editorial-collection-card--with-excerpt) .editorial-title-3 { min-height:0; }
