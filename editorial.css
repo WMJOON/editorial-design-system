@@ -456,3 +456,5 @@ html { font-size: var(--editorial-root-font-size); }
 @media (max-width:720px) { .editorial-collection-grid--compact { grid-template-columns:1fr; } .editorial-collection-grid--compact > .editorial-collection-card { max-width:none; } }
 
 .editorial-collection-card .editorial-collection-card-title--small { font-size:var(--editorial-type-lead-size); }
+
+.editorial-collection-card-context { margin:0 0 var(--editorial-ref-space-2); color:var(--editorial-muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
