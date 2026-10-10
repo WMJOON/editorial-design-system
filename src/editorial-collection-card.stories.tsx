@@ -18,3 +18,5 @@ export const SmallTitle: Story = { args: { titleSize: "small" } };
 export const WithRecommendationContext: Story = { args: { titleSize: "small", context: "관심 주제 · 지식 시스템, 세법·자산운용", analyticsLocation: "home_for_you" } };
 
 export const WithExcerpt: Story = { args: { showExcerpt: true } };
+
+export const RegularTitle: Story = { args: { titleSize: "default" } };
