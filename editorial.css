@@ -337,6 +337,8 @@ html { font-size: var(--editorial-root-font-size); }
 
 .editorial-content {
   width: min(var(--editorial-reading-measure), 100%);
+  min-width: 0;
+  overflow-wrap: anywhere;
   margin: 0 auto;
   padding: var(--editorial-space-section) 0 var(--editorial-space-article-block);
   color: var(--editorial-ink);
