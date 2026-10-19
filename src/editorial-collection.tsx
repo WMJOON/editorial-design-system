@@ -5,7 +5,7 @@ import { EditorialCollectionCardGrid, EditorialCollectionList } from "./editoria
 import { EditorialCollectionHeader, type EditorialCollectionView } from "./editorial-collection-header.js";
 import { EditorialTextLink } from "./editorial-text-link.js";
 
-export type EditorialCollectionItem = { id: string; href: string; title: string; category?: string; date?: string; excerpt?: string; cover?: string };
+export type EditorialCollectionItem = { id: string; href: string; title: string; category?: string; date?: string; excerpt?: string; cover?: string; coverSrcSet?: string; coverSizes?: string };
 export type EditorialCollectionProps = { items: EditorialCollectionItem[]; heading?: string; countLabel?: string; className?: string; defaultView?: EditorialCollectionView; showExcerpt?: boolean; loadMoreHref?: string; loadMoreLabel?: string };
 
 /** A reusable list/card collection for a home feed, archive, or topic page. */

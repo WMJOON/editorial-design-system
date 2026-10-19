@@ -20,3 +20,11 @@ export const WithRecommendationContext: Story = { args: { titleSize: "small", co
 export const WithExcerpt: Story = { args: { showExcerpt: true } };
 
 export const RegularTitle: Story = { args: { titleSize: "default" } };
+
+export const ResponsiveCover: Story = {
+  args: {
+    cover: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&w=320&q=90",
+    coverSrcSet: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&w=320&q=90 320w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&w=640&q=90 640w",
+    coverSizes: "auto, 340px",
+  },
+};
