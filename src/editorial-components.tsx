@@ -50,7 +50,7 @@ export function EditorialMenuBar({ links = [], label = "주요 메뉴", classNam
 /** The hamburger button for the header. It toggles the menu region by id. */
 export function EditorialMenuToggle({ label = "메뉴" }: { label?: string }) {
   return <label className="editorial-menu-toggle" htmlFor={EDITORIAL_MENU_ID}>
-    <span className="editorial-menu-toggle__icon" aria-hidden="true" /><span>{label}</span>
+    <span className="editorial-menu-toggle__icon" aria-hidden="true" /><span className="editorial-visually-hidden">{label}</span>
   </label>;
 }
 
