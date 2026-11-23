@@ -211,7 +211,7 @@ html { font-size: var(--editorial-root-font-size); }
 
 .editorial-site-header { width: min(1100px, calc(100% - var(--editorial-space-inline-gutter) - var(--editorial-space-inline-gutter))); margin-inline: auto; }
 .editorial-menu-bar { width: 100%; padding-inline: var(--editorial-space-inline-gutter); padding-block: var(--editorial-ref-space-3, 12px); }
-.editorial-menu-toggle { list-style: none; display: inline-flex; align-items: center; gap: var(--editorial-ref-space-3, 12px); min-height: 44px; padding-inline: var(--editorial-ref-space-4, 16px); border: 1px solid var(--editorial-line, #d9d9d9); border-radius: 999px; cursor: pointer; color: var(--editorial-ink, #27272a); font: inherit; }
+.editorial-menu-toggle { list-style: none; display: inline-flex; align-items: center; gap: var(--editorial-ref-space-3, 12px); min-height: 44px; padding-inline: var(--editorial-ref-space-4, 16px); border: 1px solid currentColor; border-radius: 999px; cursor: pointer; color: inherit; font: inherit; background: transparent; }
 .editorial-menu-toggle::-webkit-details-marker { display: none; }
 .editorial-menu-toggle:focus-visible { outline: 2px solid var(--editorial-link, #1d4ed8); outline-offset: 2px; }
 .editorial-menu-toggle__icon { position: relative; display: inline-block; width: 18px; height: 12px; }
@@ -219,14 +219,14 @@ html { font-size: var(--editorial-root-font-size); }
 .editorial-menu-toggle__icon::before { top: 0; box-shadow: 0 5px 0 currentColor; }
 .editorial-menu-toggle__icon::after { bottom: 0; }
 .editorial-menu-panel { display: flex; flex-direction: column; gap: var(--editorial-ref-space-2, 8px); padding-block: var(--editorial-ref-space-4, 16px); padding-inline: var(--editorial-ref-space-3, 12px); }
-.editorial-menu-panel a { min-height: 44px; display: inline-flex; align-items: center; color: var(--editorial-ink, #27272a); font-size: 1.125rem; }
+.editorial-menu-panel a { min-height: 44px; display: inline-flex; align-items: center; color: inherit; font-size: 1.125rem; }
 .editorial-menu-panel a:hover { color: var(--editorial-link, #1d4ed8); }
 /* 햄버거 버튼은 헤더 맨 왼쪽에 겹쳐 놓고(DOM 순서는 MenuBar, Header 그대로), 펼친 패널은 헤더 아래로 띄운다. */
 .editorial-page-menu { position: relative; display: block; }
 .editorial-page-menu > .editorial-menu-bar { position: absolute; top: 0; left: 0; width: auto; padding: 0; margin: 0; z-index: 30; }
 .editorial-page-menu > .editorial-menu-bar > .editorial-menu-toggle { margin: 12px 0 0 var(--editorial-space-inline-gutter); }
 .editorial-page-menu > .editorial-site-header .editorial-nav { padding-inline-start: calc(var(--editorial-space-inline-gutter) + 56px); }
-.editorial-page-menu > .editorial-menu-bar[open] > .editorial-menu-panel { position: absolute; top: 60px; left: var(--editorial-space-inline-gutter); min-width: 14rem; background: var(--editorial-bg, #fff); border: 1px solid var(--editorial-line, #d9d9d9); border-radius: 12px; box-shadow: 0 12px 32px rgb(0 0 0 / 0.18); padding-block: var(--editorial-ref-space-2, 8px); }
+.editorial-page-menu > .editorial-menu-bar[open] > .editorial-menu-panel { position: absolute; top: 60px; left: var(--editorial-space-inline-gutter); min-width: 14rem; background: var(--editorial-surface, var(--editorial-bg, #111)); color: inherit; border: 1px solid currentColor; border-radius: 12px; box-shadow: 0 12px 32px rgb(0 0 0 / 0.18); padding-block: var(--editorial-ref-space-2, 8px); }
 .editorial-divider { display:block; flex:none; background:var(--editorial-line); }
 .editorial-divider--horizontal { inline-size:100%; block-size:var(--editorial-border-width); }
 .editorial-divider--vertical { inline-size:var(--editorial-border-width); block-size:100%; }
