@@ -213,6 +213,19 @@ html { font-size: var(--editorial-root-font-size); }
 .editorial-menu-bar { border-bottom: 1px solid var(--editorial-line, #d9d9d9); }
 .editorial-menu-bar__inner { width: min(1100px, calc(100% - var(--editorial-space-inline-gutter) - var(--editorial-space-inline-gutter))); margin-inline: auto; min-height: 44px; display: flex; align-items: center; }
 .editorial-menu-bar a { min-height: 44px; display: inline-flex; align-items: center; }
+/* 메뉴 영역을 본문 왼쪽에 세로로 둔다(넓은 화면). 헤더는 위 전폭, 본문은 오른쪽 칸을 쓴다.
+   DOM 순서(MenuBar, Header, Body, Footer)는 그대로 두고 grid 배치만 바꾼다. 좁은 화면은 한 칸으로 쌓는다(기기 칸 1). */
+.editorial-page-menu { display: block; }
+@media (min-width: 721px) {
+  .editorial-page-menu { display: grid; grid-template-columns: minmax(11rem, 14rem) minmax(0, 1fr); column-gap: var(--editorial-space-inline-gutter); align-items: start; }
+  .editorial-page-menu > .editorial-site-header { grid-column: 1 / -1; grid-row: 1; }
+  .editorial-page-menu > .editorial-menu-bar { grid-column: 1; grid-row: 2; }
+  .editorial-page-menu > :not(.editorial-menu-bar):not(.editorial-site-header):not(footer) { grid-column: 2; }
+  .editorial-page-menu > footer { grid-column: 1 / -1; }
+  .editorial-page-menu .editorial-menu-bar { border-bottom: 0; }
+  .editorial-page-menu .editorial-menu-bar__inner { width: auto; margin: 0; min-height: 0; padding-block: var(--editorial-ref-space-4, 16px); }
+  .editorial-page-menu .editorial-menu-bar .editorial-nav-links { flex-direction: column; gap: var(--editorial-ref-space-3, 12px); }
+}
 .editorial-divider { display:block; flex:none; background:var(--editorial-line); }
 .editorial-divider--horizontal { inline-size:100%; block-size:var(--editorial-border-width); }
 .editorial-divider--vertical { inline-size:var(--editorial-border-width); block-size:100%; }
