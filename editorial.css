@@ -210,7 +210,7 @@ html { font-size: var(--editorial-root-font-size); }
 }
 
 .editorial-site-header { width: min(1100px, calc(100% - var(--editorial-space-inline-gutter) - var(--editorial-space-inline-gutter))); margin-inline: auto; }
-.editorial-menu-bar { width: min(1100px, calc(100% - var(--editorial-space-inline-gutter) - var(--editorial-space-inline-gutter))); margin-inline: auto; padding-block: var(--editorial-ref-space-3, 12px); }
+.editorial-menu-bar { width: 100%; padding-inline: var(--editorial-space-inline-gutter); padding-block: var(--editorial-ref-space-3, 12px); }
 .editorial-menu-toggle { list-style: none; display: inline-flex; align-items: center; gap: var(--editorial-ref-space-3, 12px); min-height: 44px; padding-inline: var(--editorial-ref-space-4, 16px); border: 1px solid var(--editorial-line, #d9d9d9); border-radius: 999px; cursor: pointer; color: var(--editorial-ink, #27272a); font: inherit; }
 .editorial-menu-toggle::-webkit-details-marker { display: none; }
 .editorial-menu-toggle:focus-visible { outline: 2px solid var(--editorial-link, #1d4ed8); outline-offset: 2px; }
