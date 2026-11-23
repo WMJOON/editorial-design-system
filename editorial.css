@@ -223,7 +223,7 @@ html { font-size: var(--editorial-root-font-size); }
 .editorial-menu-panel a:hover { color: var(--editorial-link, #1d4ed8); }
 /* 햄버거 버튼은 헤더 맨 왼쪽에 겹쳐 놓고(DOM 순서는 MenuBar, Header 그대로), 펼친 패널은 헤더 아래로 띄운다. */
 .editorial-page-menu { position: relative; display: block; }
-.editorial-page-menu > .editorial-menu-bar { position: absolute; top: 0; left: 0; width: auto; padding: 0; margin: 0; z-index: 30; }
+.editorial-page-menu > .editorial-menu-bar { position: fixed; top: 0; left: 0; width: auto; padding: 0; margin: 0; z-index: 60; }
 .editorial-page-menu > .editorial-menu-bar > .editorial-menu-toggle { margin: 12px 0 0 var(--editorial-space-inline-gutter); }
 .editorial-page-menu > .editorial-site-header .editorial-nav { padding-inline-start: calc(var(--editorial-space-inline-gutter) + 56px); }
 .editorial-page-menu > .editorial-menu-bar[open] > .editorial-menu-panel { position: absolute; top: 60px; left: var(--editorial-space-inline-gutter); min-width: 14rem; background: var(--editorial-surface, var(--editorial-bg, #111)); color: inherit; border: 1px solid currentColor; border-radius: 12px; box-shadow: 0 12px 32px rgb(0 0 0 / 0.18); padding-block: var(--editorial-ref-space-2, 8px); }
