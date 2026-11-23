@@ -225,6 +225,9 @@ html { font-size: var(--editorial-root-font-size); }
   .editorial-page-menu .editorial-menu-bar { border-bottom: 0; }
   .editorial-page-menu .editorial-menu-bar__inner { width: auto; margin: 0; min-height: 0; padding-block: var(--editorial-ref-space-4, 16px); }
   .editorial-page-menu .editorial-menu-bar .editorial-nav-links { flex-direction: column; gap: var(--editorial-ref-space-3, 12px); }
+  .editorial-page-menu .editorial-menu-bar__inner { padding-inline: var(--editorial-space-inline-gutter); }
+  .editorial-page-menu .editorial-menu-bar .editorial-nav-links a { color: var(--editorial-muted, #71717a); font-size: 0.9375rem; line-height: 1.4; }
+  .editorial-page-menu .editorial-menu-bar .editorial-nav-links a:hover { color: var(--editorial-ink, #27272a); }
 }
 .editorial-divider { display:block; flex:none; background:var(--editorial-line); }
 .editorial-divider--horizontal { inline-size:100%; block-size:var(--editorial-border-width); }
