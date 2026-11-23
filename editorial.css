@@ -210,26 +210,24 @@ html { font-size: var(--editorial-root-font-size); }
 }
 
 .editorial-site-header { width: min(1100px, calc(100% - var(--editorial-space-inline-gutter) - var(--editorial-space-inline-gutter))); margin-inline: auto; }
-.editorial-menu-bar { width: 100%; padding-inline: var(--editorial-space-inline-gutter); padding-block: var(--editorial-ref-space-3, 12px); }
-.editorial-menu-toggle { list-style: none; display: inline-flex; align-items: center; gap: var(--editorial-ref-space-3, 12px); min-height: 44px; padding-inline: var(--editorial-ref-space-4, 16px); border: 1px solid currentColor; border-radius: 999px; cursor: pointer; color: inherit; font: inherit; background: transparent; }
-.editorial-menu-toggle::-webkit-details-marker { display: none; }
-.editorial-menu-toggle:focus-visible { outline: 2px solid var(--editorial-link, #1d4ed8); outline-offset: 2px; }
+/* 메뉴: 헤더 아래 본문 왼쪽 칸에서 밀고 들어온다. 헤더는 위 전폭, 본문은 [메뉴 | 콘텐츠·사이드바·푸터] 두 칸이다.
+   햄버거 버튼은 헤더 안(EditorialMenuToggle)에 있고, 숨은 체크박스의 상태로 메뉴 칸 폭을 정한다(스크립트 없음). */
+.editorial-nav-brand { display: flex; align-items: center; gap: var(--editorial-ref-space-4, 16px); }
+.editorial-menu-check { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.editorial-menu-toggle { display: inline-flex; align-items: center; gap: var(--editorial-ref-space-3, 12px); min-height: 44px; padding-inline: var(--editorial-ref-space-4, 16px); border: 1px solid currentColor; border-radius: 999px; cursor: pointer; color: inherit; font: inherit; background: transparent; }
 .editorial-menu-toggle__icon { position: relative; display: inline-block; width: 18px; height: 12px; }
 .editorial-menu-toggle__icon::before, .editorial-menu-toggle__icon::after { content: ""; position: absolute; left: 0; right: 0; height: 2px; background: currentColor; }
 .editorial-menu-toggle__icon::before { top: 0; box-shadow: 0 5px 0 currentColor; }
 .editorial-menu-toggle__icon::after { bottom: 0; }
-.editorial-menu-panel { display: flex; flex-direction: column; gap: var(--editorial-ref-space-2, 8px); padding-block: var(--editorial-ref-space-4, 16px); padding-inline: var(--editorial-ref-space-3, 12px); }
+.editorial-page-menu { display: grid; grid-template-columns: var(--editorial-menu-width, 0px) minmax(0, 1fr); transition: grid-template-columns 0.28s ease; }
+.editorial-page-menu:has(> .editorial-menu-check:checked) { --editorial-menu-width: 17rem; }
+.editorial-page-menu:has(> .editorial-menu-check:focus-visible) .editorial-menu-toggle { outline: 2px solid var(--editorial-link, #1d4ed8); outline-offset: 2px; }
+.editorial-page-menu > .editorial-site-header { grid-column: 1 / -1; grid-row: 1; }
+.editorial-page-menu > .editorial-menu-bar { grid-column: 1; grid-row: 2; align-self: start; position: sticky; top: 0; z-index: 40; height: 100vh; margin: 0 0 -100vh; width: 100%; overflow: hidden; }
+.editorial-page-menu > :not(.editorial-menu-bar):not(.editorial-site-header):not(.editorial-menu-check) { grid-column: 2; min-width: 0; }
+.editorial-menu-panel { box-sizing: border-box; width: 17rem; height: 100%; display: flex; flex-direction: column; gap: var(--editorial-ref-space-2, 8px); padding: var(--editorial-ref-space-6, 24px) var(--editorial-ref-space-4, 16px); background: var(--editorial-surface, var(--editorial-bg, #111)); border-right: 1px solid currentColor; }
 .editorial-menu-panel a { min-height: 44px; display: inline-flex; align-items: center; color: inherit; font-size: 1.125rem; }
 .editorial-menu-panel a:hover { color: var(--editorial-link, #1d4ed8); }
-/* 메뉴는 왼쪽에서 밀려 들어온다. 페이지 칸은 [메뉴 | 프레임] 두 칸이고, 메뉴가 열리면 메뉴 칸이 펼쳐지며 프레임을 오른쪽으로 민다.
-   프레임 = header + body(content, sideBar) + footer. 메뉴 버튼은 고정 위치에 둔다. */
-.editorial-page-menu { display: grid; grid-template-columns: var(--editorial-menu-width, 0px) minmax(0, 1fr); transition: grid-template-columns 0.28s ease; }
-.editorial-page-menu:has(> .editorial-menu-bar[open]) { --editorial-menu-width: 17rem; }
-.editorial-page-menu > .editorial-menu-bar { grid-column: 1; grid-row: 1; align-self: start; position: sticky; top: 0; z-index: 60; height: 100vh; margin: 0 0 -100vh; width: 100%; padding: 0; }
-.editorial-page-menu > :not(.editorial-menu-bar) { grid-column: 2; min-width: 0; }
-.editorial-page-menu > .editorial-site-header .editorial-nav { padding-inline-start: calc(var(--editorial-space-inline-gutter) + 128px); }
-.editorial-page-menu > .editorial-menu-bar > .editorial-menu-toggle { position: fixed; top: 12px; left: 24px; z-index: 60; margin: 0; }
-.editorial-page-menu > .editorial-menu-bar > .editorial-menu-panel { box-sizing: border-box; width: 17rem; height: 100%; padding: 88px var(--editorial-ref-space-4, 16px) var(--editorial-ref-space-4, 16px); background: var(--editorial-surface, var(--editorial-bg, #111)); border-right: 1px solid currentColor; }
 .editorial-divider { display:block; flex:none; background:var(--editorial-line); }
 .editorial-divider--horizontal { inline-size:100%; block-size:var(--editorial-border-width); }
 .editorial-divider--vertical { inline-size:var(--editorial-border-width); block-size:100%; }

@@ -5,7 +5,7 @@ import { EditorialWordWrap } from "./editorial-word-wrap.js";
 
 export type EditorialLink = { href: string; label: string };
 
-export type EditorialNavProps = { brand: string; brandHref?: string; links?: EditorialLink[]; trailing?: ReactNode };
+export type EditorialNavProps = { brand: string; brandHref?: string; links?: EditorialLink[]; leading?: ReactNode; trailing?: ReactNode };
 
 export type EditorialSiteIntroLink = EditorialSocialLinkItem;
 
@@ -22,25 +22,36 @@ export type EditorialSiteIntroProps = {
  * The navigation molecule. Use EditorialSiteHeader for a complete page shell
  * when the navigation needs its own responsive, centred content boundary.
  */
-export function EditorialNav({ brand, brandHref = "/", links = [], trailing }: EditorialNavProps) {
+export function EditorialNav({ brand, brandHref = "/", links = [], leading, trailing }: EditorialNavProps) {
   return <nav className="editorial-nav" aria-label="주요 메뉴">
-    <a className="editorial-wordmark" href={brandHref}>{brand}</a>
+    <div className="editorial-nav-brand">{leading}<a className="editorial-wordmark" href={brandHref}>{brand}</a></div>
     <div className="editorial-nav-links">{links.map((link) => <a key={`${link.href}-${link.label}`} href={link.href}>{link.label}</a>)}</div>
     {trailing && <div className="editorial-nav-trailing">{trailing}</div>}
   </nav>;
 }
 
+/** The id that links the header's menu toggle to the menu region. */
+export const EDITORIAL_MENU_ID = "editorial-menu";
+
 /**
- * The menu region: a hamburger toggle (native details/summary, no script) that
- * reveals the primary links, in the style of a menu panel that opens on demand.
+ * The menu region. It renders a visually hidden checkbox (the state) and the
+ * link panel. The page grid pushes the frame aside while the checkbox is on, so
+ * no script is needed. Place it before EditorialSiteHeader in the page.
  */
-export function EditorialMenuBar({ links = [], label = "주요 메뉴", toggleLabel = "메뉴", className }: { links?: EditorialLink[]; label?: string; toggleLabel?: string; className?: string }) {
-  return <details className={["editorial-menu-bar", className].filter(Boolean).join(" ")}>
-    <summary className="editorial-menu-toggle"><span className="editorial-menu-toggle__icon" aria-hidden="true" /><span>{toggleLabel}</span></summary>
-    <nav className="editorial-menu-panel" aria-label={label}>
-      {links.map((link) => <a key={`${link.href}-${link.label}`} href={link.href}>{link.label}</a>)}
+export function EditorialMenuBar({ links = [], label = "주요 메뉴", className }: { links?: EditorialLink[]; label?: string; className?: string }) {
+  return <>
+    <input className="editorial-menu-check" type="checkbox" id={EDITORIAL_MENU_ID} aria-label="메뉴 열기" />
+    <nav className={["editorial-menu-bar", className].filter(Boolean).join(" ")} aria-label={label}>
+      <div className="editorial-menu-panel">{links.map((link) => <a key={`${link.href}-${link.label}`} href={link.href}>{link.label}</a>)}</div>
     </nav>
-  </details>;
+  </>;
+}
+
+/** The hamburger button for the header. It toggles the menu region by id. */
+export function EditorialMenuToggle({ label = "메뉴" }: { label?: string }) {
+  return <label className="editorial-menu-toggle" htmlFor={EDITORIAL_MENU_ID}>
+    <span className="editorial-menu-toggle__icon" aria-hidden="true" /><span>{label}</span>
+  </label>;
 }
 
 /**
