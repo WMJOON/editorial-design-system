@@ -31,14 +31,16 @@ export function EditorialNav({ brand, brandHref = "/", links = [], trailing }: E
 }
 
 /**
- * The menu bar: the site's primary links as their own region, separate from
- * the header that carries the brand and trailing actions. Use it above
- * EditorialSiteHeader (brand, trailing) to keep menu and header apart.
+ * The menu region: a hamburger toggle (native details/summary, no script) that
+ * reveals the primary links, in the style of a menu panel that opens on demand.
  */
-export function EditorialMenuBar({ links = [], label = "주요 메뉴", className }: { links?: EditorialLink[]; label?: string; className?: string }) {
-  return <nav className={["editorial-menu-bar", className].filter(Boolean).join(" ")} aria-label={label}>
-    <div className="editorial-menu-bar__inner"><div className="editorial-nav-links">{links.map((link) => <a key={`${link.href}-${link.label}`} href={link.href}>{link.label}</a>)}</div></div>
-  </nav>;
+export function EditorialMenuBar({ links = [], label = "주요 메뉴", toggleLabel = "메뉴", className }: { links?: EditorialLink[]; label?: string; toggleLabel?: string; className?: string }) {
+  return <details className={["editorial-menu-bar", className].filter(Boolean).join(" ")}>
+    <summary className="editorial-menu-toggle"><span className="editorial-menu-toggle__icon" aria-hidden="true" /><span>{toggleLabel}</span></summary>
+    <nav className="editorial-menu-panel" aria-label={label}>
+      {links.map((link) => <a key={`${link.href}-${link.label}`} href={link.href}>{link.label}</a>)}
+    </nav>
+  </details>;
 }
 
 /**
