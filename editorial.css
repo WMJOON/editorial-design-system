@@ -229,7 +229,7 @@ html { font-size: var(--editorial-root-font-size); }
 .editorial-page-menu > .editorial-menu-bar { grid-column: 1; grid-row: 2 / span 50; align-self: start; position: sticky; top: var(--editorial-header-offset, 68px); z-index: 40; height: calc(100vh - var(--editorial-header-offset, 68px)); width: 100%; overflow: hidden; }
 .editorial-page-menu > :not(.editorial-menu-bar):not(.editorial-site-header):not(.editorial-menu-check) { grid-column: 2; min-width: 0; }
 /* TTL cmp:MenuBar: 폭 size-56x(224px = 14rem), 좌우 여백 inset-menu-x(12px 씩, 합 24px). 테두리·면 색은 없다. */
-.editorial-menu-panel { box-sizing: border-box; width: 14rem; height: 100%; display: flex; flex-direction: column; gap: var(--editorial-ref-space-2, 8px); padding: var(--editorial-ref-space-6, 24px) var(--editorial-ref-space-3, 12px); background: var(--paper, var(--editorial-bg, #111)); border-right: 1px solid var(--editorial-line, #d9d9d9); }
+.editorial-menu-panel { box-sizing: border-box; width: 14rem; height: 100%; display: flex; flex-direction: column; gap: var(--editorial-ref-space-2, 8px); padding: var(--editorial-ref-space-6, 24px) var(--editorial-ref-space-4, 16px); background: var(--paper, var(--editorial-bg, #111)); border-right: 1px solid var(--editorial-line, #d9d9d9); }
 .editorial-menu-panel a { min-height: 40px; display: inline-flex; align-items: center; padding-inline: 8px; color: inherit; font-size: var(--editorial-type-body-size); line-height: var(--editorial-type-body-line-height); }
 .editorial-menu-panel a:hover { color: var(--editorial-link, #1d4ed8); }
 .editorial-divider { display:block; flex:none; background:var(--editorial-line); }
