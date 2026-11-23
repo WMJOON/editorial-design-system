@@ -31,6 +31,17 @@ export function EditorialNav({ brand, brandHref = "/", links = [], trailing }: E
 }
 
 /**
+ * The menu bar: the site's primary links as their own region, separate from
+ * the header that carries the brand and trailing actions. Use it above
+ * EditorialSiteHeader (brand, trailing) to keep menu and header apart.
+ */
+export function EditorialMenuBar({ links = [], label = "주요 메뉴", className }: { links?: EditorialLink[]; label?: string; className?: string }) {
+  return <nav className={["editorial-menu-bar", className].filter(Boolean).join(" ")} aria-label={label}>
+    <div className="editorial-menu-bar__inner"><div className="editorial-nav-links">{links.map((link) => <a key={`${link.href}-${link.label}`} href={link.href}>{link.label}</a>)}</div></div>
+  </nav>;
+}
+
+/**
  * The shared page header. Keeping the content width and responsive navigation
  * in the design system prevents each consumer from rebuilding a fragile shell.
  */

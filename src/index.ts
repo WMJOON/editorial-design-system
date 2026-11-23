@@ -25,7 +25,7 @@ export { EditorialCollectionCard, EditorialCollectionCardGrid, EditorialCollecti
 export type { EditorialCollectionCardProps, EditorialCollectionListItemProps } from "./editorial-collection-items.js";
 export { EditorialModal } from "./editorial-modal.js";
 export type { EditorialModalProps, EditorialModalSize } from "./editorial-modal.js";
-export { EditorialArticle, EditorialArticleHeader, EditorialBadge, EditorialNav, EditorialSiteHeader, EditorialSiteIntro, EditorialTag, EditorialTags } from "./editorial-components.js";
+export { EditorialArticle, EditorialArticleHeader, EditorialBadge, EditorialMenuBar, EditorialNav, EditorialSiteHeader, EditorialSiteIntro, EditorialTag, EditorialTags } from "./editorial-components.js";
 export type { EditorialLink, EditorialNavProps, EditorialSiteIntroLink, EditorialSiteIntroProps } from "./editorial-components.js";
 export type { EditorialMetadataSize } from "./editorial-components.js";
 export { EditorialProjectLinks, EditorialSiteFooter, EditorialTopicBar, EditorialTopicIndex } from "./editorial-site-sections.js";

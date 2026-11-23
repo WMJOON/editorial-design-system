@@ -210,6 +210,9 @@ html { font-size: var(--editorial-root-font-size); }
 }
 
 .editorial-site-header { width: min(1100px, calc(100% - var(--editorial-space-inline-gutter) - var(--editorial-space-inline-gutter))); margin-inline: auto; }
+.editorial-menu-bar { border-bottom: 1px solid var(--editorial-line, #d9d9d9); }
+.editorial-menu-bar__inner { width: min(1100px, calc(100% - var(--editorial-space-inline-gutter) - var(--editorial-space-inline-gutter))); margin-inline: auto; min-height: 44px; display: flex; align-items: center; }
+.editorial-menu-bar a { min-height: 44px; display: inline-flex; align-items: center; }
 .editorial-divider { display:block; flex:none; background:var(--editorial-line); }
 .editorial-divider--horizontal { inline-size:100%; block-size:var(--editorial-border-width); }
 .editorial-divider--vertical { inline-size:var(--editorial-border-width); block-size:100%; }
