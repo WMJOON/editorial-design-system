@@ -227,6 +227,7 @@ html { font-size: var(--editorial-root-font-size); }
 .editorial-page-menu:has(> .editorial-menu-bar[open]) { --editorial-menu-width: 17rem; }
 .editorial-page-menu > .editorial-menu-bar { grid-column: 1; grid-row: 1; align-self: start; position: sticky; top: 0; height: 100vh; margin: 0 0 -100vh; overflow: hidden; width: 100%; padding: 0; }
 .editorial-page-menu > :not(.editorial-menu-bar) { grid-column: 2; min-width: 0; }
+.editorial-page-menu > .editorial-site-header .editorial-nav { padding-inline-start: calc(var(--editorial-space-inline-gutter) + 128px); }
 .editorial-page-menu > .editorial-menu-bar > .editorial-menu-toggle { position: fixed; top: 12px; left: 24px; z-index: 60; margin: 0; }
 .editorial-page-menu > .editorial-menu-bar > .editorial-menu-panel { box-sizing: border-box; width: 17rem; height: 100%; padding: 88px var(--editorial-ref-space-4, 16px) var(--editorial-ref-space-4, 16px); background: var(--editorial-surface, var(--editorial-bg, #111)); border-right: 1px solid currentColor; }
 .editorial-divider { display:block; flex:none; background:var(--editorial-line); }
